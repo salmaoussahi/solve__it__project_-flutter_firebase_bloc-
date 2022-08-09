@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutterfirebase/pages/plus_detail.dart';
 import 'package:flutterfirebase/palette.dart';
 import 'package:flutterfirebase/widget/solvit.logo.dart';
 
@@ -35,7 +36,10 @@ class Accueil extends StatelessWidget {
               mainAxisSize: MainAxisSize.min,
               children: <Widget>[
                 const ListTile(
-                  trailing: Icon(Icons.check_circle,color: Colors.green,),
+                  trailing: Icon(
+                    Icons.check_circle,
+                    color: Colors.green,
+                  ),
                   title: Text(
                     'Libellé',
                     style: TextStyle(color: Colors.yellow),
@@ -48,60 +52,24 @@ class Accueil extends StatelessWidget {
                     Row(
                       children: [Icon(Icons.star), Text("vote")],
                     ),
-                    MaterialButton(onPressed: (){},color: Palette.blue,child: Text("Plus de détail",style: TextStyle(color:Colors.white),),)
+                    MaterialButton(
+                      onPressed: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => PlusDetail()));
+                      },
+                      color: Palette.blue,
+                      child: Text(
+                        "Plus de détail",
+                        style: TextStyle(color: Colors.white),
+                      ),
+                    )
                   ],
                 ),
               ],
             ),
           ),
-          Card(
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: <Widget>[
-                const ListTile(
-                  trailing: Icon(Icons.check_circle,color: Colors.green,),
-                  title: Text(
-                    'Libellé',
-                    style: TextStyle(color: Colors.yellow),
-                  ),
-                  subtitle: Text('Description du problème'),
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: <Widget>[
-                    Row(
-                      children: [Icon(Icons.star), Text("vote")],
-                    ),
-                    MaterialButton(onPressed: (){},color: Palette.blue,child: Text("Plus de détail",style: TextStyle(color:Colors.white),),)
-                  ],
-                ),
-              ],
-            ),
-          ),
-          Card(
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: <Widget>[
-                const ListTile(
-                  trailing: Icon(Icons.check_circle,color: Colors.green,),
-                  title: Text(
-                    'Libellé',
-                    style: TextStyle(color: Colors.yellow),
-                  ),
-                  subtitle: Text('Description du problème'),
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: <Widget>[
-                    Row(
-                      children: [Icon(Icons.star), Text("vote")],
-                    ),
-                    MaterialButton(onPressed: (){},color: Palette.blue,child: Text("Plus de détail",style: TextStyle(color:Colors.white),),)
-                  ],
-                ),
-              ],
-            ),
-          )
         ],
       ),
     );

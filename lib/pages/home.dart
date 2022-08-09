@@ -1,5 +1,9 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutterfirebase/pages/Authentication/logout.dart';
 import 'package:flutterfirebase/pages/accueil.dart';
+import 'package:flutterfirebase/pages/Authentication/firstpage.dart';
+import 'package:flutterfirebase/pages/groupe.dart';
 import 'package:flutterfirebase/pages/setting.dart';
 import 'package:flutterfirebase/palette.dart';
 
@@ -12,7 +16,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   int currentTab = 0;
-  final List screens = [Accueil(), Chat(), Profil(), Setting()];
+  final List screens = [Accueil(), Groupe(), Setting()];
 
   final PageStorageBucket bucket = PageStorageBucket();
   Widget currentScreen = Accueil();
@@ -25,13 +29,15 @@ class _HomePageState extends State<HomePage> {
       ),
       floatingActionButton: FloatingActionButton(
         backgroundColor: Palette.yellow,
-        child: Icon(Icons.add,color: Palette.blue,),
+        child: Icon(
+          Icons.add,
+          color: Palette.blue,
+        ),
         onPressed: () {},
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       bottomNavigationBar: BottomAppBar(
         shape: CircularNotchedRectangle(),
-        
         notchMargin: 10,
         child: Container(
           color: Palette.blue,
@@ -53,12 +59,15 @@ class _HomePageState extends State<HomePage> {
                     child: Column(
                       children: [
                         Icon(Icons.home,
-                            color: currentTab == 0 ? Palette.yellow : Colors.white),
+                            color: currentTab == 0
+                                ? Palette.yellow
+                                : Colors.white),
                         Text(
                           "Accueil",
                           style: TextStyle(
-                              color:
-                                  currentTab == 0 ? Palette.yellow : Colors.white),
+                              color: currentTab == 0
+                                  ? Palette.yellow
+                                  : Colors.white),
                         )
                       ],
                     ),
@@ -67,19 +76,22 @@ class _HomePageState extends State<HomePage> {
                     minWidth: 30,
                     onPressed: () {
                       setState(() {
-                        currentScreen = Chat();
+                        currentScreen = Groupe();
                         currentTab = 1;
                       });
                     },
                     child: Column(
                       children: [
                         Icon(Icons.people,
-                            color: currentTab == 1 ? Palette.yellow : Colors.white),
+                            color: currentTab == 1
+                                ? Palette.yellow
+                                : Colors.white),
                         Text(
                           "Groupes",
                           style: TextStyle(
-                              color:
-                                  currentTab == 1 ? Palette.yellow : Colors.white),
+                              color: currentTab == 1
+                                  ? Palette.yellow
+                                  : Colors.white),
                         )
                       ],
                     ),
@@ -101,12 +113,15 @@ class _HomePageState extends State<HomePage> {
                       children: [
                         Icon(Icons.settings,
                             size: 20,
-                            color: currentTab == 2 ? Palette.yellow : Colors.white),
+                            color: currentTab == 2
+                                ? Palette.yellow
+                                : Colors.white),
                         Text(
                           "Parametre",
                           style: TextStyle(
-                              color:
-                                  currentTab == 2 ? Palette.yellow : Colors.white),
+                              color: currentTab == 2
+                                  ? Palette.yellow
+                                  : Colors.white),
                         )
                       ],
                     ),
@@ -115,22 +130,23 @@ class _HomePageState extends State<HomePage> {
                     minWidth: 30,
                     onPressed: () {
                       setState(() {
-                        // currentScreen = Chat();
                         currentTab = 3;
-                      });
-                    },
+                        currentScreen = Logout();
+                    });},
                     child: Column(
                       children: [
                         Icon(
                           Icons.logout,
-                          color: currentTab == 3 ? Palette.yellow : Colors.white,
+                          color:
+                              currentTab == 3 ? Palette.yellow : Colors.white,
                           size: 20,
                         ),
                         Text(
                           "Sortir",
                           style: TextStyle(
-                              color:
-                                  currentTab == 3 ? Palette.yellow : Colors.white),
+                              color: currentTab == 3
+                                  ? Palette.yellow
+                                  : Colors.white),
                         )
                       ],
                     ),
@@ -141,28 +157,6 @@ class _HomePageState extends State<HomePage> {
           ),
         ),
       ),
-    );
-  }
-}
-
-class Chat extends StatelessWidget {
-  const Chat({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Center(
-      child: Text("Chat"),
-    );
-  }
-}
-
-class Profil extends StatelessWidget {
-  const Profil({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Center(
-      child: Text("Profil"),
     );
   }
 }

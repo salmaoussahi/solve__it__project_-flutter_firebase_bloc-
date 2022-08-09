@@ -1,9 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:flutterfirebase/pages/Profil.dart';
+import 'package:flutterfirebase/palette.dart';
 import 'package:flutterfirebase/widget/solvit.logo.dart';
 
-class Setting extends StatelessWidget {
+class Setting extends StatefulWidget {
   const Setting({Key? key}) : super(key: key);
 
+  @override
+  State<Setting> createState() => _SettingState();
+}
+
+class _SettingState extends State<Setting> {
+  var isSelected;
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -26,10 +34,32 @@ class Setting extends StatelessWidget {
               ),
             ],
           ),
-           SizedBox(
+          SizedBox(
             height: 10,
           ),
-         
+          Column(
+            children: [
+              ListTile(
+                onTap: (() {
+                  Navigator.push(context, MaterialPageRoute(builder: ((context) => Profil())));
+                }),
+                title: Text("Profil"),
+                trailing: Icon(Icons.person,color: Palette.yellow,),
+              ),
+              
+              ListTile(
+                title: Text("Thème"),
+                trailing: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [Icon(Icons.sunny,color: Palette.yellow,), Icon(Icons.dark_mode_rounded)],
+                ),
+              ),
+              // ListTile(
+              //   title: Text("Modifier mot de passe"),
+              //   trailing: Icon(Icons.password,color: Palette.grey,),
+              // ),
+            ],
+          )
         ],
       ),
     );
