@@ -1,7 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutterfirebase/bloc/user_bloc.dart';
+import 'package:flutterfirebase/bloc/user/user_bloc.dart';
 import 'package:flutterfirebase/pages/Authentication/SignIn/signin.dart';
 import 'package:flutterfirebase/pages/Authentication/firstpage.dart';
 import 'package:flutterfirebase/repository/user.repository.dart';

@@ -1,7 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
-import 'package:flutterfirebase/bloc/user_event.dart';
-import 'package:flutterfirebase/bloc/user_state.dart';
+import 'package:flutterfirebase/bloc/user/user_event.dart';
+import 'package:flutterfirebase/bloc/user/user_state.dart';
 import 'package:flutterfirebase/repository/user.repository.dart';
 import 'package:meta/meta.dart';
 
@@ -9,7 +9,7 @@ import 'package:meta/meta.dart';
 class AuthBloc extends Bloc<AuthEvent, AuthState> {
   final AuthRepository authRepository;
   AuthBloc({required this.authRepository}) : super(UnAuthenticated()) {
-    // When User Presses the SignIn Button, we will send the SignInRequested Event to the AuthBloc to handle it and emit the Authenticated State if the user is authenticated
+// Lorsque l'utilisateur appuie sur le bouton de connexion, nous envoyons l'événement SignInRequested à AuthBloc pour le gérer et émettre l'état authentifié si l'utilisateur est authentifié
     on<SignInRequested>((event, emit) async {
       emit(Loading());
       try {
@@ -21,19 +21,19 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
         emit(UnAuthenticated());
       }
     });
-    // When User Presses the SignUp Button, we will send the SignUpRequest Event to the AuthBloc to handle it and emit the Authenticated State if the user is authenticated
+// Lorsque l'utilisateur appuie sur le bouton d'inscription, nous enverrons l'événement SignUpRequest au AuthBloc pour le gérer et émettre l'état authentifié si l'utilisateur est authentifié
     on<SignUpRequested>((event, emit) async {
       emit(Loading());
       try {
         await authRepository.signUp(
-            email: event.email, password: event.password);
+            email: event.email, password: event.password,f_name: event.f_name,l_name: event.l_name);
         emit(Authenticated());
       } catch (e) {
         emit(AuthError(e.toString()));
         emit(UnAuthenticated());
       }
     });
-    // When User Presses the Google Login Button, we will send the GoogleSignInRequest Event to the AuthBloc to handle it and emit the Authenticated State if the user is authenticated
+    // Lorsque l'utilisateur appuie sur le bouton de connexion Google, nous envoyons l'événement GoogleSignInRequest à AuthBloc pour le gérer et émettre l'état authentifié si l'utilisateur est authentifié
     on<GoogleSignInRequested>((event, emit) async {
       emit(Loading());
       try {
@@ -44,7 +44,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
         emit(UnAuthenticated());
       }
     });
-    // When User Presses the SignOut Button, we will send the SignOutRequested Event to the AuthBloc to handle it and emit the UnAuthenticated State
+    // Lorsque l'utilisateur appuie sur le bouton de déconnexion, nous envoyons l'événement SignOutRequested à AuthBloc pour le gérer et émettre l'état non authentifié
     on<SignOutRequested>((event, emit) async {
       emit(Loading());
       await authRepository.signOut();

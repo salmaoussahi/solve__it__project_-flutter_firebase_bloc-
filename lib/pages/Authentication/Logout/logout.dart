@@ -1,9 +1,9 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutterfirebase/bloc/user_bloc.dart';
-import 'package:flutterfirebase/bloc/user_event.dart';
-import 'package:flutterfirebase/bloc/user_state.dart';
+import 'package:flutterfirebase/bloc/user/user_bloc.dart';
+import 'package:flutterfirebase/bloc/user/user_event.dart';
+import 'package:flutterfirebase/bloc/user/user_state.dart';
 import 'package:flutterfirebase/pages/Authentication/SignIn/signin.dart';
 import 'package:flutterfirebase/pages/home.dart';
 import 'package:flutterfirebase/palette.dart';

@@ -1,9 +1,9 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutterfirebase/pages/Authentication/logout.dart';
+import 'package:flutterfirebase/pages/Authentication/Logout/logout.dart';
 import 'package:flutterfirebase/pages/accueil.dart';
 import 'package:flutterfirebase/pages/Authentication/firstpage.dart';
-import 'package:flutterfirebase/pages/groupe.dart';
+import 'package:flutterfirebase/pages/Groupee/groupe.dart';
 import 'package:flutterfirebase/pages/setting.dart';
 import 'package:flutterfirebase/palette.dart';
 

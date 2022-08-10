@@ -1,9 +1,9 @@
 import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutterfirebase/bloc/user_bloc.dart';
-import 'package:flutterfirebase/bloc/user_event.dart';
-import 'package:flutterfirebase/bloc/user_state.dart';
+import 'package:flutterfirebase/bloc/user/user_bloc.dart';
+import 'package:flutterfirebase/bloc/user/user_event.dart';
+import 'package:flutterfirebase/bloc/user/user_state.dart';
 import 'package:flutterfirebase/pages/Authentication/SignUp/signup.dart';
 import 'package:flutterfirebase/pages/home.dart';
 import 'package:flutterfirebase/palette.dart';
@@ -61,101 +61,103 @@ class _SignInState extends State<SignIn> {
                   }
                   if (state is UnAuthenticated) {
                     // Showing the sign in form if the user is not authenticated
-                    return Center(
-                      child: Padding(
-                        padding: const EdgeInsets.all(18.0),
-                        child: SingleChildScrollView(
-                          reverse: true,
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              const Text(
-                                "Page de Connexion",
-                                style: TextStyle(
-                                    fontSize: 30,
-                                    fontWeight: FontWeight.bold),
-                              ),
-                              const SizedBox(
-                                height: 18,
-                              ),
-                              Center(
-                                child: Form(
-                                  key: _formKey,
-                                  child: Column(
-                                    children: [
-                                      TextFormField(
-                                        keyboardType:
-                                            TextInputType.emailAddress,
-                                        controller: _emailController,
-                                        decoration: const InputDecoration(
-                                          hintText: "Entrer votre email",
-                                          border: OutlineInputBorder(),
-                                        ),
-                                        autovalidateMode:
-                                            AutovalidateMode.onUserInteraction,
-                                        validator: (value) {
-                                          return value != null &&
-                                                  !EmailValidator.validate(
-                                                      value)
-                                              ? 'Enter a valid email'
-                                              : null;
-                                        },
-                                      ),
-                                      const SizedBox(
-                                        height: 10,
-                                      ),
-                                      TextFormField(
-                                        keyboardType: TextInputType.text,
-                                        controller: _passwordController,
-                                        decoration: const InputDecoration(
-                                          hintText: "Entrer votre mot de passe",
-                                          border: OutlineInputBorder(),
-                                        ),
-                                        autovalidateMode:
-                                            AutovalidateMode.onUserInteraction,
-                                        validator: (value) {
-                                          return value != null &&
-                                                  value.length < 6
-                                              ? "Enter min. 6 characters"
-                                              : null;
-                                        },
-                                      ),
-                                      const SizedBox(
-                                        height: 12,
-                                      ),
-                                      SizedBox(
-                                        width:
-                                            MediaQuery.of(context).size.width *
-                                                0.7,
-                                        child: ElevatedButton(
-                                          style: ElevatedButton.styleFrom(
-                                              primary: Palette.yellow),
-                                          onPressed: () {
-                                            _authenticateWithEmailAndPassword(
-                                                context);
-                                          },
-                                          child: const Text(
-                                            'Connecter-Vous',
-                                            style:
-                                                TextStyle(color: Colors.white),
+                    return Expanded(
+                      child: Center(
+                        child: Padding(
+                          padding: const EdgeInsets.all(18.0),
+                          child: SingleChildScrollView(
+                            reverse: true,
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                const Text(
+                                  "Page de Connexion",
+                                  style: TextStyle(
+                                      fontSize: 30,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                                const SizedBox(
+                                  height: 18,
+                                ),
+                                Center(
+                                  child: Form(
+                                    key: _formKey,
+                                    child: Column(
+                                      children: [
+                                        TextFormField(
+                                          keyboardType:
+                                              TextInputType.emailAddress,
+                                          controller: _emailController,
+                                          decoration: const InputDecoration(
+                                            hintText: "Entrer votre email",
+                                            border: OutlineInputBorder(),
                                           ),
+                                          autovalidateMode:
+                                              AutovalidateMode.onUserInteraction,
+                                          validator: (value) {
+                                            return value != null &&
+                                                    !EmailValidator.validate(
+                                                        value)
+                                                ? 'Enter a valid email'
+                                                : null;
+                                          },
                                         ),
-                                      )
-                                    ],
+                                        const SizedBox(
+                                          height: 10,
+                                        ),
+                                        TextFormField(
+                                          keyboardType: TextInputType.text,
+                                          controller: _passwordController,
+                                          decoration: const InputDecoration(
+                                            hintText: "Entrer votre mot de passe",
+                                            border: OutlineInputBorder(),
+                                          ),
+                                          autovalidateMode:
+                                              AutovalidateMode.onUserInteraction,
+                                          validator: (value) {
+                                            return value != null &&
+                                                    value.length < 6
+                                                ? "Enter min. 6 characters"
+                                                : null;
+                                          },
+                                        ),
+                                        const SizedBox(
+                                          height: 12,
+                                        ),
+                                        SizedBox(
+                                          width:
+                                              MediaQuery.of(context).size.width *
+                                                  0.7,
+                                          child: ElevatedButton(
+                                            style: ElevatedButton.styleFrom(
+                                                primary: Palette.yellow),
+                                            onPressed: () {
+                                              _authenticateWithEmailAndPassword(
+                                                  context);
+                                            },
+                                            child: const Text(
+                                              'Connecter-Vous',
+                                              style:
+                                                  TextStyle(color: Colors.white),
+                                            ),
+                                          ),
+                                        )
+                                      ],
+                                    ),
                                   ),
                                 ),
-                              ),
-                              IconButton(
-                                onPressed: () {
-                                  _authenticateWithGoogle(context);
-                                },
-                                icon: Image.network(
-                                  "https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/1200px-Google_%22G%22_Logo.svg.png",
-                                  height: 30,
-                                  width: 30,
+                                IconButton(
+                                  onPressed: () {
+                                    _authenticateWithGoogle(context);
+                                  },
+                                  icon: Image.network(
+                                    "https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/1200px-Google_%22G%22_Logo.svg.png",
+                                    height: 30,
+                                    width: 30,
+                                  ),
                                 ),
-                              ),
-                            ],
+                              ],
+                            ),
                           ),
                         ),
                       ),
