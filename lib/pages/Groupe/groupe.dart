@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutterfirebase/pages/Groupee/add.groupe.dart';
+import 'package:flutterfirebase/pages/Groupe/add.groupe.dart';
+import 'package:flutterfirebase/pages/Groupe/allUsers.dart';
 import 'package:flutterfirebase/palette.dart';
 import 'package:flutterfirebase/widget/solvit.logo.dart';
 
@@ -33,7 +34,7 @@ class _GroupeState extends State<Groupe> {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: ((context) => AddGroupe())));
+                              builder: ((context) => AllUsrers())));
                     },
                   ),
                 ),

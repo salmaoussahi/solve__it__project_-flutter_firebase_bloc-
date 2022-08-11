@@ -6,3 +6,9 @@ abstract class GroupeEvent extends Equatable {
   @override
   List<Object> get props => [];
 }
+
+class AddgroupRequest extends GroupeEvent {
+  final String libelle;
+
+  AddgroupRequest(this.libelle);
+}

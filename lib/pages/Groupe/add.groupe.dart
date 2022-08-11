@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutterfirebase/pages/Groupee/multiselect.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutterfirebase/bloc/groupe/groupe_bloc.dart';
+import 'package:flutterfirebase/bloc/user/user_bloc.dart';
+import 'package:flutterfirebase/pages/Groupe/multiselect.dart';
 import 'package:flutterfirebase/palette.dart';
 
 import '../../widget/solvit.logo.dart';
@@ -15,15 +18,8 @@ class _AddGroupeState extends State<AddGroupe> {
   List<String> _selectedItems = [];
 
   void _showMultiSelect() async {
-    // a list of selectable items
-    // these items can be hard-coded or dynamically fetched from a database/API
     final List<String> _items = [
       'User 1',
-      'User 2',
-      'User 3',
-      'User 4',
-      'User 5',
-      'User 6'
     ];
 
     final List<String>? results = await showDialog(
@@ -33,7 +29,6 @@ class _AddGroupeState extends State<AddGroupe> {
       },
     );
 
-    // Update UI
     if (results != null) {
       setState(() {
         _selectedItems = results;
@@ -43,6 +38,8 @@ class _AddGroupeState extends State<AddGroupe> {
 
   @override
   Widget build(BuildContext context) {
+    TextEditingController _libelle = new TextEditingController();
+
     return Scaffold(
       body: SafeArea(
         child: Column(
@@ -70,6 +67,7 @@ class _AddGroupeState extends State<AddGroupe> {
                     Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: TextFormField(
+                        controller: _libelle,
                         decoration: const InputDecoration(
                           hintText: "Libellé du groupe",
                           border: OutlineInputBorder(),
@@ -95,17 +93,21 @@ class _AddGroupeState extends State<AddGroupe> {
                         children: [
                           ElevatedButton(
                             style: ElevatedButton.styleFrom(
-                              primary: Palette.yellow
+                                primary: Palette.yellow),
+                            child: const Text(
+                              'Selectionner des membres',
+                              style: TextStyle(color: Colors.white),
                             ),
-                            child: const Text('Selectionner des membres',style: TextStyle(color: Colors.white),),
                             onPressed: _showMultiSelect,
                           ),
-                         
                           Wrap(
                             children: _selectedItems
                                 .map((e) => Chip(
-                                  backgroundColor: Palette.blue,
-                                      label: Text(e,style: TextStyle(color: Colors.white),),
+                                      backgroundColor: Palette.grey,
+                                      label: Text(
+                                        e,
+                                        style: TextStyle(color: Colors.white),
+                                      ),
                                     ))
                                 .toList(),
                           )

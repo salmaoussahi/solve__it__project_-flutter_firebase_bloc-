@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -5,6 +7,7 @@ import 'package:flutterfirebase/bloc/user/user_bloc.dart';
 import 'package:flutterfirebase/bloc/user/user_event.dart';
 import 'package:flutterfirebase/bloc/user/user_state.dart';
 import 'package:flutterfirebase/pages/Authentication/SignUp/signup.dart';
+import 'package:flutterfirebase/pages/Authentication/forgot_password.dart';
 import 'package:flutterfirebase/pages/home.dart';
 import 'package:flutterfirebase/palette.dart';
 import 'package:flutterfirebase/widget/solvit.logo.dart';
@@ -39,14 +42,10 @@ class _SignInState extends State<SignIn> {
             BlocListener<AuthBloc, AuthState>(
               listener: (context, state) {
                 if (state is Authenticated) {
-                  // Navigating to the dashboard screen if the user is authenticated
-                  Navigator.pushReplacement(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) =>  HomePage()));
+                  Navigator.pushReplacement(context,
+                      MaterialPageRoute(builder: (context) => HomePage()));
                 }
                 if (state is AuthError) {
-                  // Showing the error message if the user has entered invalid credentials
                   ScaffoldMessenger.of(context)
                       .showSnackBar(SnackBar(content: Text(state.error)));
                 }
@@ -54,13 +53,11 @@ class _SignInState extends State<SignIn> {
               child: BlocBuilder<AuthBloc, AuthState>(
                 builder: (context, state) {
                   if (state is Loading) {
-                    // Showing the loading indicator while the user is signing in
                     return const Center(
                       child: CircularProgressIndicator(),
                     );
                   }
                   if (state is UnAuthenticated) {
-                    // Showing the sign in form if the user is not authenticated
                     return Expanded(
                       child: Center(
                         child: Padding(
@@ -92,8 +89,8 @@ class _SignInState extends State<SignIn> {
                                             hintText: "Entrer votre email",
                                             border: OutlineInputBorder(),
                                           ),
-                                          autovalidateMode:
-                                              AutovalidateMode.onUserInteraction,
+                                          autovalidateMode: AutovalidateMode
+                                              .onUserInteraction,
                                           validator: (value) {
                                             return value != null &&
                                                     !EmailValidator.validate(
@@ -106,14 +103,16 @@ class _SignInState extends State<SignIn> {
                                           height: 10,
                                         ),
                                         TextFormField(
+                                          obscureText: true,
                                           keyboardType: TextInputType.text,
                                           controller: _passwordController,
                                           decoration: const InputDecoration(
-                                            hintText: "Entrer votre mot de passe",
+                                            hintText:
+                                                "Entrer votre mot de passe",
                                             border: OutlineInputBorder(),
                                           ),
-                                          autovalidateMode:
-                                              AutovalidateMode.onUserInteraction,
+                                          autovalidateMode: AutovalidateMode
+                                              .onUserInteraction,
                                           validator: (value) {
                                             return value != null &&
                                                     value.length < 6
@@ -125,23 +124,37 @@ class _SignInState extends State<SignIn> {
                                           height: 12,
                                         ),
                                         SizedBox(
-                                          width:
-                                              MediaQuery.of(context).size.width *
-                                                  0.7,
+                                          width: MediaQuery.of(context)
+                                                  .size
+                                                  .width *
+                                              0.7,
                                           child: ElevatedButton(
                                             style: ElevatedButton.styleFrom(
-                                                primary: Palette.yellow),
+                                                primary: Palette.blue),
                                             onPressed: () {
                                               _authenticateWithEmailAndPassword(
                                                   context);
                                             },
                                             child: const Text(
                                               'Connecter-Vous',
-                                              style:
-                                                  TextStyle(color: Colors.white),
+                                              style: TextStyle(
+                                                  color: Colors.white),
                                             ),
                                           ),
-                                        )
+                                        ),
+                                        TextButton(
+                                            onPressed: () {
+                                              Navigator.push(
+                                                  context,
+                                                  MaterialPageRoute(
+                                                      builder: ((context) =>
+                                                          ForgotPassword())));
+                                            },
+                                            child: Text(
+                                              'Vous avez oublier votre mot de passe',
+                                              style: TextStyle(
+                                                  color: Palette.yellow),
+                                            ))
                                       ],
                                     ),
                                   ),

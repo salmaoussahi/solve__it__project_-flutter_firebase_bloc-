@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutterfirebase/pages/Authentication/reset_password.dart';
 import 'package:flutterfirebase/pages/Profil.dart';
 import 'package:flutterfirebase/palette.dart';
 import 'package:flutterfirebase/widget/solvit.logo.dart';
@@ -54,10 +55,13 @@ class _SettingState extends State<Setting> {
                   children: [Icon(Icons.sunny,color: Palette.yellow,), Icon(Icons.dark_mode_rounded)],
                 ),
               ),
-              // ListTile(
-              //   title: Text("Modifier mot de passe"),
-              //   trailing: Icon(Icons.password,color: Palette.grey,),
-              // ),
+              ListTile(
+                title: Text("Modifier mot de passe"),
+                trailing: Icon(Icons.password,color: Palette.grey,),
+                onTap: (() {
+                  Navigator.push(context, MaterialPageRoute(builder: ((context) => ResetPassword())));
+                }),
+              ),
             ],
           )
         ],

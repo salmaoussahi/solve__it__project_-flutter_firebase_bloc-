@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -16,9 +18,9 @@ class AuthRepository {
           .signInWithEmailAndPassword(email: email, password: password);
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {
-        throw Exception('No user found for that email.');
+        throw Exception('Cette email n existe pas');
       } else if (e.code == 'wrong-password') {
-        throw Exception('Wrong password provided for that user.');
+        throw Exception('Mot de passe erronné');
       }
     }
   }
@@ -44,9 +46,9 @@ class AuthRepository {
       });
     } on FirebaseAuthException catch (e) {
       if (e.code == 'weak-password') {
-        throw Exception('The password provided is too weak.');
+        throw Exception('Mot de passe faible.');
       } else if (e.code == 'email-already-in-use') {
-        throw Exception('The account already exists for that email.');
+        throw Exception('Un compte est déja créé pae cet email.');
       }
     } catch (e) {
       throw Exception(e.toString());
@@ -79,10 +81,5 @@ class AuthRepository {
     }
   }
 
-  Future<dynamic> getAllUsers() async {
-    final Stream<QuerySnapshot<Map<String, dynamic>>> document =
-        FirebaseFirestore.instance.collection("UserData").snapshots();
-
-    print(document);
-  }
+ 
 }
