@@ -1,8 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterfirebase/pages/Groupe/multiselect.dart';
-import 'package:flutterfirebase/palette.dart';
-import 'package:flutterfirebase/widget/solvit.logo.dart';
+import 'package:flutterfirebase/pages/widget/palette.dart';
 
 class AllUsrers extends StatefulWidget {
   @override
@@ -22,7 +21,7 @@ class _AllUsrersState extends State<AllUsrers> {
           children: [
              Row(
             children: [
-              SlovitLogo(),
+              // SlovitLogo(),
             ],
           ),
           SizedBox(

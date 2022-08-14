@@ -6,8 +6,8 @@ import 'package:flutterfirebase/bloc/user/user_event.dart';
 import 'package:flutterfirebase/bloc/user/user_state.dart';
 import 'package:flutterfirebase/pages/Authentication/SignIn/signin.dart';
 import 'package:flutterfirebase/pages/home.dart';
-import 'package:flutterfirebase/palette.dart';
-import 'package:flutterfirebase/widget/solvit.logo.dart';
+import 'package:flutterfirebase/pages/widget/palette.dart';
+import 'package:flutterfirebase/pages/widget/solvit.logo.dart';
 
 class SignUp extends StatefulWidget {
   const SignUp({Key? key}) : super(key: key);

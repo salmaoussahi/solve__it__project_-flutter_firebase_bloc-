@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutterfirebase/pages/Authentication/reset_password.dart';
-import 'package:flutterfirebase/pages/Profil.dart';
-import 'package:flutterfirebase/palette.dart';
-import 'package:flutterfirebase/widget/solvit.logo.dart';
+import 'package:flutterfirebase/pages/Setting/reset_password.dart';
+import 'package:flutterfirebase/pages/Setting/Profil.dart';
+import 'package:flutterfirebase/pages/widget/palette.dart';
 
 class Setting extends StatefulWidget {
   const Setting({Key? key}) : super(key: key);
@@ -18,11 +17,7 @@ class _SettingState extends State<Setting> {
     return SafeArea(
       child: Column(
         children: [
-          Row(
-            children: [
-              SlovitLogo(),
-            ],
-          ),
+         
           SizedBox(
             height: 10,
           ),

@@ -6,8 +6,7 @@ import 'package:flutterfirebase/bloc/user/user_event.dart';
 import 'package:flutterfirebase/bloc/user/user_state.dart';
 import 'package:flutterfirebase/pages/Authentication/SignIn/signin.dart';
 import 'package:flutterfirebase/pages/home.dart';
-import 'package:flutterfirebase/palette.dart';
-import 'package:flutterfirebase/widget/solvit.logo.dart';
+import 'package:flutterfirebase/pages/widget/palette.dart';
 
 class Logout extends StatelessWidget {
   final user = FirebaseAuth.instance.currentUser!;
@@ -27,11 +26,10 @@ class Logout extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            SlovitLogo(),
             Column(children: [
               Text(
               '${user.email}',
-              style: const TextStyle(fontSize: 24,color:Color(0xFFFDD037)),
+              style: const TextStyle(fontSize: 24,color:Color(0xFFFFFF00)),
               textAlign: TextAlign.center,
             ),
             Text(

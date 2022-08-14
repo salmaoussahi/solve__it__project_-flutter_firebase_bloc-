@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutterfirebase/palette.dart';
-import 'package:flutterfirebase/widget/solvit.logo.dart';
+import 'package:flutterfirebase/pages/widget/palette.dart';
+
 
 class PlusDetail extends StatelessWidget {
   const PlusDetail({Key? key}) : super(key: key);
@@ -11,11 +11,7 @@ class PlusDetail extends StatelessWidget {
       body: SafeArea(
         child: Column(
           children: [
-            Row(
-              children: [
-                SlovitLogo(),
-              ],
-            ),
+            
             SizedBox(
               height: 30,
             ),

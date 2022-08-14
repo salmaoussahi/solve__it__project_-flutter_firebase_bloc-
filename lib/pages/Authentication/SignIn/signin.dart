@@ -9,8 +9,8 @@ import 'package:flutterfirebase/bloc/user/user_state.dart';
 import 'package:flutterfirebase/pages/Authentication/SignUp/signup.dart';
 import 'package:flutterfirebase/pages/Authentication/forgot_password.dart';
 import 'package:flutterfirebase/pages/home.dart';
-import 'package:flutterfirebase/palette.dart';
-import 'package:flutterfirebase/widget/solvit.logo.dart';
+import 'package:flutterfirebase/pages/widget/palette.dart';
+import 'package:flutterfirebase/pages/widget/solvit.logo.dart';
 
 class SignIn extends StatefulWidget {
   const SignIn({Key? key}) : super(key: key);

@@ -1,11 +1,10 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterfirebase/pages/Authentication/Logout/logout.dart';
-import 'package:flutterfirebase/pages/accueil.dart';
-import 'package:flutterfirebase/pages/Authentication/firstpage.dart';
+import 'package:flutterfirebase/pages/Accueil/accueil.dart';
 import 'package:flutterfirebase/pages/Groupe/groupe.dart';
-import 'package:flutterfirebase/pages/setting.dart';
-import 'package:flutterfirebase/palette.dart';
+import 'package:flutterfirebase/pages/Setting/setting.dart';
+import 'package:flutterfirebase/pages/widget/palette.dart';
+import 'package:flutterfirebase/pages/widget/solvit.logo.dart';
 
 class HomePage extends StatefulWidget {
   HomePage({Key? key}) : super(key: key);
@@ -23,6 +22,18 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+        automaticallyImplyLeading: false,
+        elevation: 0,
+        title: Row(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            SlovitLogo(),
+          ],
+        ),
+        
+      ),
       body: PageStorage(
         child: currentScreen,
         bucket: bucket,

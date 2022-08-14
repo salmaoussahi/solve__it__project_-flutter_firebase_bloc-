@@ -1,9 +1,9 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:flutterfirebase/pages/plus_detail.dart';
-import 'package:flutterfirebase/palette.dart';
-import 'package:flutterfirebase/widget/solvit.logo.dart';
+import 'package:flutterfirebase/pages/Accueil/plus_detail.dart';
+import 'package:flutterfirebase/pages/widget/palette.dart';
+import 'package:flutterfirebase/pages/widget/solvit.logo.dart';
 
 class ResetPassword extends StatelessWidget {
   final user = FirebaseAuth.instance.currentUser!;
@@ -15,25 +15,28 @@ class ResetPassword extends StatelessWidget {
         body: Column(
           children: [
             Row(
-              children: [
-                SlovitLogo(),
-              ],
-            ),
-            SizedBox(
-              height: 10,
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                Text(
-                  "Modifier le mot de passe",
-                  style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
-                ),
-              ],
-            ),
-            SizedBox(
-              height: 10,
-            ),
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        SlovitLogo(),
+                        SizedBox(
+                          height: 10,
+                        ),
+                        Text(
+                          "Modifier mot de passe",
+                          style: TextStyle(
+                              fontSize: 25, fontWeight: FontWeight.bold),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            
+            
             SingleChildScrollView(
               reverse: true,
               child: Column(
