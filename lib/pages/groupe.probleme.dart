@@ -171,18 +171,21 @@ class _GroupeProblemState extends State<GroupeProblem> {
                                     style: TextStyle(color: Palette.grey)),
                               ),
                               Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.end,
+                                mainAxisAlignment: MainAxisAlignment.end,
                                 children: <Widget>[
-                                  
                                   MaterialButton(
                                     onPressed: () {
                                       Navigator.push(
                                           context,
                                           MaterialPageRoute(
                                               builder: (context) => PlusDetail(
-                                                  problemId:
-                                                      data.docs[index].id)));
+                                                    problemId:
+                                                        data.docs[index].id,
+                                                    description: data.docs[index]['description'],
+                                                    isSolved: data.docs[index]['isSolved'],
+                                                    libelle: data.docs[index]['libelle'],
+                                                    userEmail: data.docs[index]['userEmail'],
+                                                  )));
                                     },
                                     color: Palette.blue,
                                     child: Text(

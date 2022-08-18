@@ -57,6 +57,19 @@ class DatabaseBloc extends Bloc<DatabaseEvent, DatabaseState> {
       }
     });
 
+    // Lorsque l'utilisateur se dirige vesr la page "Accueil",
+// nous envoyons l'événement UserProblemsRequested à DatabaseBloc pour le gérer
+    on<ProblemCommentsRequested>((event, emit) async {
+      emit(LodingProblemComments());
+      try {
+        emit(LoadedProblemComments(
+            comments:
+                await databaserepository.problemComments(event.problemId)));
+      } catch (e) {
+        emit(ErrorProblemComments(errormessage: e.toString()));
+      }
+    });
+
     // Lorsque l'utilisateur créé un groupe,
 // nous envoyons l'événement AddGroupeRequested à DatabaseBloc pour le gérer
     on<AddGroupeRequested>((event, emit) async {
@@ -89,6 +102,25 @@ class DatabaseBloc extends Bloc<DatabaseEvent, DatabaseState> {
       } catch (e) {
         emit(ErrorAddComment(errormessage: e.toString()));
         emit(InitialAddComment());
+      }
+    });
+
+    // Lorsque l'utilisateur ajoute un problem,
+// nous envoyons l'événement AddProblemRequested à DatabaseBloc pour le gérer
+    on<AddProblemRequested>((event, emit) async {
+      emit(LodingAddProblem());
+      try {
+        await databaserepository.addProblem(
+            description: event.description,
+            libelle: event.intitule,
+            groupeId: event.groupeId,
+            userEmail: FirebaseAuth.instance.currentUser!.email.toString(),
+            userId: FirebaseAuth.instance.currentUser!.uid.toString(),
+            isSolved: false);
+        emit(LoadedAddProblem());
+      } catch (e) {
+        emit(ErrorAddProblem(errormessage: e.toString()));
+        emit(InitialAddProblem());
       }
     });
   }

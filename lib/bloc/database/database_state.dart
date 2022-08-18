@@ -105,7 +105,30 @@ class ErrorGroupProblems extends DatabaseState {
 }
 
 /******************************************************************************/
-/***************************l'état AddProblems*****************************/
+/***************************l'état ProblemComments*****************************/
+
+// Lorsque l'utilisateur se dirige vesr la page "Accueil",
+//l'état passe d'abord au chargement Loading.
+class LodingProblemComments extends DatabaseState {}
+
+// Lorsque les données sont chargées, l'état passe à Loaded.
+class LoadedProblemComments extends DatabaseState {
+  Stream<QuerySnapshot> comments;
+  LoadedProblemComments({
+    required this.comments,
+  });
+}
+
+// Si une erreur se produit, l'état est changé en Error
+class ErrorProblemComments extends DatabaseState {
+  String errormessage;
+  ErrorProblemComments({
+    required this.errormessage,
+  });
+}
+
+/******************************************************************************/
+/***************************l'état AddGroup*****************************/
 
 // Lorsque l'utilisateur se dirige vesr la page "Accueil",
 //l'état passe d'abord au chargement Loading.
@@ -125,7 +148,7 @@ class ErrorAddGroup extends DatabaseState {
 }
 
 /******************************************************************************/
-/***************************l'état AddProblems*****************************/
+/***************************l'état AddComment*****************************/
 
 // Lorsque l'utilisateur se dirige vesr la page "Accueil",
 //l'état passe d'abord au chargement Loading.
@@ -140,6 +163,27 @@ class InitialAddComment extends DatabaseState {}
 class ErrorAddComment extends DatabaseState {
   String errormessage;
   ErrorAddComment({
+    required this.errormessage,
+  });
+}
+
+
+/******************************************************************************/
+/***************************l'état AddProblems*****************************/
+
+// Lorsque l'utilisateur se dirige vesr la page "Accueil",
+//l'état passe d'abord au chargement Loading.
+class LodingAddProblem extends DatabaseState {}
+
+// Lorsque les données sont chargées, l'état passe à Loaded.
+class LoadedAddProblem extends DatabaseState {}
+
+class InitialAddProblem extends DatabaseState {}
+
+// Si une erreur se produit, l'état est changé en Error
+class ErrorAddProblem extends DatabaseState {
+  String errormessage;
+  ErrorAddProblem({
     required this.errormessage,
   });
 }

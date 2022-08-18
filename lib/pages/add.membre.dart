@@ -35,6 +35,7 @@ class _AddMembreState extends State<AddMembre> {
     .then((value) => print("User Updated"))
     .catchError((error) => print("Failed to update user: $error"));
 }
+
   void _onSearch() async {
     var data = await FirebaseFirestore.instance
         .collection("UserData")
@@ -91,7 +92,7 @@ class _AddMembreState extends State<AddMembre> {
                         icon: Icon(Icons.search), onPressed: _onSearch)),
               ),
             ),
-            _userMap != null
+            _userMap != {}
                 ? ListTile(
                     onTap: (() {
                       print(_userMap);

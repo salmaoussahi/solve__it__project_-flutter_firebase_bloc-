@@ -86,11 +86,7 @@ class _AccueilState extends State<Accueil> {
                                   ),
                                   title: Column(
                                     children: [
-                                      // Text(
-                                      //   'Groupe : ${data.docs[index]['groupeId']}',
-                                      //   style: TextStyle(
-                                      //       fontSize: 18, color: Palette.yellow),
-                                      // ),
+                                      
                                       Text(
                                         '${data.docs[index]['libelle']}',
                                         style: TextStyle(fontSize: 24),
@@ -108,14 +104,9 @@ class _AccueilState extends State<Accueil> {
                                 ),
                                 Row(
                                   mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
+                                      MainAxisAlignment.end,
                                   children: <Widget>[
-                                    Row(
-                                      children: [
-                                        Icon(Icons.star),
-                                        Text("${data.docs[index]['nbrVote']}")
-                                      ],
-                                    ),
+                                   
                                     MaterialButton(
                                       onPressed: () {
                                         Navigator.push(
@@ -123,8 +114,19 @@ class _AccueilState extends State<Accueil> {
                                             MaterialPageRoute(
                                                 builder: (context) =>
                                                     PlusDetail(
-                                                        problemId: data
-                                                            .docs[index].id)));
+                                                      problemId:
+                                                          data.docs[index].id,
+                                                      description:
+                                                          data.docs[index]
+                                                              ['description'],
+                                                      isSolved: data.docs[index]
+                                                          ['isSolved'],
+                                                      libelle: data.docs[index]
+                                                          ['libelle'],
+                                                      userEmail:
+                                                          data.docs[index]
+                                                              ['userEmail'],
+                                                    )));
                                       },
                                       color: Palette.blue,
                                       child: Text(

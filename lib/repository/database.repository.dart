@@ -35,6 +35,14 @@ class Databaserepository {
         .snapshots();
   }
 
+  //Afficher les commentaire d'un probleme
+  Stream<QuerySnapshot<Map<String, dynamic>>> problemComments(problemId) {
+    return FirebaseFirestore.instance
+        .collection('Commentaire')
+        .where("problemId", isEqualTo: problemId)
+        .snapshots();
+  }
+
   //Ajouter un groupe
   Future<void> addGroupe(
       {required String libelle,
@@ -67,6 +75,29 @@ class Databaserepository {
         "valide": valide,
         "vote": vote,
         "problemId": problemId,
+        "userEmail": userEmail
+      }).catchError((error) => print("Error: $error"));
+    } catch (e) {
+      throw Exception(e.toString());
+    }
+  }
+
+//Ajouter un problem
+  Future<void> addProblem({
+    required String description,
+    required String libelle,
+    required String groupeId,
+    required String userEmail,
+    required String userId,
+    required bool isSolved,
+  }) async {
+    try {
+      await FirebaseFirestore.instance.collection('Problem').add({
+        "description": description,
+        "libelle": libelle,
+        "isSolved": isSolved,
+        "groupeId": groupeId,
+        "userId": userId,
         "userEmail": userEmail
       }).catchError((error) => print("Error: $error"));
     } catch (e) {

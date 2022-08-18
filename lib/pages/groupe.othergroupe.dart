@@ -5,7 +5,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutterfirebase/bloc/database/database_bloc.dart';
 import 'package:flutterfirebase/pages/config.palette.dart';
 import 'package:flutterfirebase/pages/config.solvit.logo.dart';
-
 import 'groupe.probleme.dart';
 
 class OtherGroup extends StatefulWidget {

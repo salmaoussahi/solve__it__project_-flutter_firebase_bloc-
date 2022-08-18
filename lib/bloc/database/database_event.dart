@@ -31,7 +31,16 @@ class GroupProblemsRequested extends DatabaseEvent {
   GroupProblemsRequested({
     required this.problemId,
   });
+}
 
+// Lorsque l'utilisateur clique sur un groupe ,
+//cet événement est appelé et [Databaserepository] est appelé
+//pour afficher les données récupérés
+class ProblemCommentsRequested extends DatabaseEvent {
+  String problemId;
+  ProblemCommentsRequested({
+    required this.problemId,
+  });
 }
 
 // Lorsque l'utilisateur demande l'ajout d'un nouveau groupe ,
@@ -54,4 +63,19 @@ class AddCommentRequested extends DatabaseEvent {
   String problemId;
 
   AddCommentRequested({required this.commentaire, required this.problemId});
+}
+
+// Lorsque l'utilisateur ajoute un groupe ,
+//cet événement est appelé et [Databaserepository] est appelé
+//peffectuer le taitement
+class AddProblemRequested extends DatabaseEvent {
+  String intitule;
+  String description;
+  String groupeId;
+
+  AddProblemRequested({
+    required this.intitule,
+    required this.description,
+    required this.groupeId,
+  });
 }
