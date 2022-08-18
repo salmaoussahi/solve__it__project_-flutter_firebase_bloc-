@@ -2,8 +2,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:email_validator/email_validator.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutterfirebase/pages/widget/palette.dart';
-import 'package:flutterfirebase/pages/widget/solvit.logo.dart';
+import 'package:flutterfirebase/pages/config.palette.dart';
+import 'package:flutterfirebase/pages/config.solvit.logo.dart';
 
 class AddProblem extends StatefulWidget {
   String groupeId;
@@ -37,8 +37,11 @@ class _AddProblemState extends State<AddProblem> {
             "userId": user.uid.toString(),
             "userEmail": user.email.toString()
           })
-          .then((value) => ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(content: Text('Groupe ajouté avec succes'))))
+          .then((value) => {
+                ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(content: Text('Problème ajouté avec succes'))),
+                Navigator.pop(context),
+              })
           .catchError((error) => print("Error: $error"));
     }
 

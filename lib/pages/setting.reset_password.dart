@@ -1,9 +1,10 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:flutterfirebase/pages/Accueil/plus_detail.dart';
-import 'package:flutterfirebase/pages/widget/palette.dart';
-import 'package:flutterfirebase/pages/widget/solvit.logo.dart';
+import 'package:flutterfirebase/pages/config.palette.dart';
+import 'package:flutterfirebase/pages/problem.plus_detail.dart';
+import 'package:flutterfirebase/pages/config.solvit.logo.dart';
+
 
 class ResetPassword extends StatelessWidget {
   final user = FirebaseAuth.instance.currentUser!;

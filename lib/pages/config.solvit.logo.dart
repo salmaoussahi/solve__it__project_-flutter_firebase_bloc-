@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutterfirebase/pages/widget/palette.dart';
-
+import 'package:flutterfirebase/pages/config.palette.dart';
 class SlovitLogo extends StatelessWidget {
   const SlovitLogo({Key? key}) : super(key: key);
 

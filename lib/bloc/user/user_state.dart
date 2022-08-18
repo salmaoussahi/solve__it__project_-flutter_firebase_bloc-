@@ -1,10 +1,9 @@
-
-
 import 'package:equatable/equatable.dart';
 
 abstract class AuthState extends Equatable {}
 
-// Lorsque l'utilisateur appuie sur le bouton de connexion ou d'inscription, l'état passe d'abord au chargement, puis à Authentifié.
+// Lorsque l'utilisateur appuie sur le bouton de connexion ou d'inscription,
+//l'état passe d'abord au chargement, puis à Authentifié.
 class Loading extends AuthState {
   @override
   List<Object?> get props => [];
@@ -16,7 +15,8 @@ class Authenticated extends AuthState {
   List<Object?> get props => [];
 }
 
-// C'est l'état initial du bloc. Lorsque l'utilisateur n'est pas authentifié, l'état passe à Non authentifié.
+// C'est l'état initial du bloc. Lorsque l'utilisateur n'est pas authentifié,
+//l'état passe à Non authentifié.
 class UnAuthenticated extends AuthState {
   @override
   List<Object?> get props => [];

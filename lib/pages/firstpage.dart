@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:flutterfirebase/pages/Authentication/SignIn/signin.dart';
+import 'package:flutterfirebase/pages/config.palette.dart';
+import 'package:flutterfirebase/pages/authentication.signin.dart';
+import 'package:flutterfirebase/pages/config.solvit.logo.dart';
 
-import 'package:flutterfirebase/pages/widget/palette.dart';
-import 'package:flutterfirebase/pages/widget/solvit.logo.dart';
 import 'package:flutterfirebase/repository/user.repository.dart';
 
 class FirstPage extends StatefulWidget {

@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutterfirebase/pages/Authentication/Logout/logout.dart';
-import 'package:flutterfirebase/pages/Accueil/accueil.dart';
-import 'package:flutterfirebase/pages/Groupe/groupe.dart';
-import 'package:flutterfirebase/pages/Setting/setting.dart';
-import 'package:flutterfirebase/pages/widget/palette.dart';
-import 'package:flutterfirebase/pages/widget/solvit.logo.dart';
+import 'package:flutterfirebase/pages/groupe.dart';
+import 'package:flutterfirebase/pages/authentication.logout.dart';
+import 'package:flutterfirebase/pages/accueil.user_problem.dart';
+import 'package:flutterfirebase/pages/config.palette.dart';
+import 'package:flutterfirebase/pages/setting.dart';
+import 'package:flutterfirebase/pages/config.solvit.logo.dart';
+
 
 class HomePage extends StatefulWidget {
   HomePage({Key? key}) : super(key: key);
@@ -32,7 +33,6 @@ class _HomePageState extends State<HomePage> {
             SlovitLogo(),
           ],
         ),
-        
       ),
       body: PageStorage(
         child: currentScreen,
@@ -41,10 +41,13 @@ class _HomePageState extends State<HomePage> {
       floatingActionButton: FloatingActionButton(
         backgroundColor: Palette.yellow,
         child: Icon(
-          Icons.add,
+          Icons.home,
           color: Palette.blue,
         ),
-        onPressed: () {},
+        onPressed: () {
+          Navigator.push(
+              context, MaterialPageRoute(builder: ((context) => HomePage())));
+        },
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       bottomNavigationBar: BottomAppBar(
@@ -54,35 +57,35 @@ class _HomePageState extends State<HomePage> {
           color: Palette.blue,
           height: 60,
           child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  MaterialButton(
-                    minWidth: 30,
-                    onPressed: () {
-                      setState(() {
-                        currentScreen = Accueil();
-                        currentTab = 0;
-                      });
-                    },
-                    child: Column(
-                      children: [
-                        Icon(Icons.home,
-                            color: currentTab == 0
-                                ? Palette.yellow
-                                : Colors.white),
-                        Text(
-                          "Accueil",
-                          style: TextStyle(
-                              color: currentTab == 0
-                                  ? Palette.yellow
-                                  : Colors.white),
-                        )
-                      ],
-                    ),
-                  ),
+                  // MaterialButton(
+                  //   minWidth: 30,
+                  //   onPressed: () {
+                  //     setState(() {
+                  //       currentScreen = Accueil();
+                  //       currentTab = 0;
+                  //     });
+                  //   },
+                  //   child: Column(
+                  //     children: [
+                  //       Icon(Icons.home,
+                  //           color: currentTab == 0
+                  //               ? Palette.yellow
+                  //               : Colors.white),
+                  //       Text(
+                  //         "Accueil",
+                  //         style: TextStyle(
+                  //             color: currentTab == 0
+                  //                 ? Palette.yellow
+                  //                 : Colors.white),
+                  //       )
+                  //     ],
+                  //   ),
+                  // ),
                   MaterialButton(
                     minWidth: 30,
                     onPressed: () {
@@ -137,31 +140,31 @@ class _HomePageState extends State<HomePage> {
                       ],
                     ),
                   ),
-                  MaterialButton(
-                    minWidth: 30,
-                    onPressed: () {
-                      setState(() {
-                        currentTab = 3;
-                        currentScreen = Logout();
-                    });},
-                    child: Column(
-                      children: [
-                        Icon(
-                          Icons.logout,
-                          color:
-                              currentTab == 3 ? Palette.yellow : Colors.white,
-                          size: 20,
-                        ),
-                        Text(
-                          "Sortir",
-                          style: TextStyle(
-                              color: currentTab == 3
-                                  ? Palette.yellow
-                                  : Colors.white),
-                        )
-                      ],
-                    ),
-                  )
+                  // MaterialButton(
+                  //   minWidth: 30,
+                  //   onPressed: () {
+                  //     setState(() {
+                  //       currentTab = 3;
+                  //       currentScreen = Logout();
+                  //   });},
+                  //   child: Column(
+                  //     children: [
+                  //       Icon(
+                  //         Icons.logout,
+                  //         color:
+                  //             currentTab == 3 ? Palette.yellow : Colors.white,
+                  //         size: 20,
+                  //       ),
+                  //       Text(
+                  //         "Sortir",
+                  //         style: TextStyle(
+                  //             color: currentTab == 3
+                  //                 ? Palette.yellow
+                  //                 : Colors.white),
+                  //       )
+                  //     ],
+                  //   ),
+                  // )
                 ],
               )
             ],

@@ -6,11 +6,12 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutterfirebase/bloc/user/user_bloc.dart';
 import 'package:flutterfirebase/bloc/user/user_event.dart';
 import 'package:flutterfirebase/bloc/user/user_state.dart';
-import 'package:flutterfirebase/pages/Authentication/SignUp/signup.dart';
-import 'package:flutterfirebase/pages/Authentication/forgot_password.dart';
+import 'package:flutterfirebase/pages/config.palette.dart';
+import 'package:flutterfirebase/pages/authentication.signup.dart';
+import 'package:flutterfirebase/pages/authentication.forgot_password.dart';
 import 'package:flutterfirebase/pages/home.dart';
-import 'package:flutterfirebase/pages/widget/palette.dart';
-import 'package:flutterfirebase/pages/widget/solvit.logo.dart';
+import 'package:flutterfirebase/pages/config.solvit.logo.dart';
+
 
 class SignIn extends StatefulWidget {
   const SignIn({Key? key}) : super(key: key);
@@ -103,14 +104,14 @@ class _SignInState extends State<SignIn> {
                                           height: 10,
                                         ),
                                         TextFormField(
-                                          obscureText: true,
+                                          obscureText:true,
                                           keyboardType: TextInputType.text,
                                           controller: _passwordController,
-                                          decoration: const InputDecoration(
-                                            hintText:
-                                                "Entrer votre mot de passe",
-                                            border: OutlineInputBorder(),
-                                          ),
+                                          decoration: InputDecoration(
+                                              hintText:
+                                                  "Entrer votre mot de passe",
+                                              border: OutlineInputBorder(),
+                                             ),
                                           autovalidateMode: AutovalidateMode
                                               .onUserInteraction,
                                           validator: (value) {
@@ -169,6 +170,22 @@ class _SignInState extends State<SignIn> {
                                     width: 30,
                                   ),
                                 ),
+                                Column(
+                                  children: [
+                                    const Text("Vous n'avez pas de compte?"),
+                                    OutlinedButton(
+                                      onPressed: () {
+                                        Navigator.pushReplacement(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) =>
+                                                  const SignUp()),
+                                        );
+                                      },
+                                      child: const Text("Créer un compte"),
+                                    )
+                                  ],
+                                )
                               ],
                             ),
                           ),
@@ -180,20 +197,6 @@ class _SignInState extends State<SignIn> {
                 },
               ),
             ),
-            Column(
-              children: [
-                const Text("Vous n'avez pas de compte?"),
-                OutlinedButton(
-                  onPressed: () {
-                    Navigator.pushReplacement(
-                      context,
-                      MaterialPageRoute(builder: (context) => const SignUp()),
-                    );
-                  },
-                  child: const Text("Créer un compte"),
-                )
-              ],
-            )
           ],
         ),
       ),

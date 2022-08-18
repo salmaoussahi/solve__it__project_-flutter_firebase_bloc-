@@ -2,11 +2,13 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutterfirebase/bloc/user/user_bloc.dart';
 import 'package:flutterfirebase/bloc/user/user_state.dart';
-import 'package:flutterfirebase/pages/Authentication/SignIn/signin.dart';
-import 'package:flutterfirebase/pages/widget/palette.dart';
-import 'package:flutterfirebase/pages/widget/solvit.logo.dart';
+import 'package:flutterfirebase/pages/config.palette.dart';
+import 'package:flutterfirebase/pages/authentication.signin.dart';
+import 'package:flutterfirebase/pages/config.solvit.logo.dart';
+
 
 class Profil extends StatefulWidget {
   @override
@@ -55,6 +57,7 @@ class _ProfilState extends State<Profil> {
                 ],
               ),
             ),
+            SvgPicture.asset("assets/user.svg",width: MediaQuery.of(context).size.width*0.7,),
             Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [

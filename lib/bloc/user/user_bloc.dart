@@ -9,7 +9,9 @@ import 'package:meta/meta.dart';
 class AuthBloc extends Bloc<AuthEvent, AuthState> {
   final AuthRepository authRepository;
   AuthBloc({required this.authRepository}) : super(UnAuthenticated()) {
-// Lorsque l'utilisateur appuie sur le bouton de connexion, nous envoyons l'événement SignInRequested à AuthBloc pour le gérer et émettre l'état authentifié si l'utilisateur est authentifié
+// Lorsque l'utilisateur appuie sur le bouton de connexion,
+// nous envoyons l'événement SignInRequested à AuthBloc pour 
+//le gérer et émettre l'état authentifié si l'utilisateur est authentifié
     on<SignInRequested>((event, emit) async {
       emit(Loading());
       try {
@@ -27,7 +29,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       try {
         await authRepository.signUp(
             email: event.email, password: event.password,f_name: event.f_name,l_name: event.l_name);
-        emit(Authenticated());
+        emit(Authenticated()); 
       } catch (e) {
         emit(AuthError(e.toString()));
         emit(UnAuthenticated());

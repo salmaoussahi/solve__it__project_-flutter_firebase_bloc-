@@ -19,3 +19,6 @@ samples, guidance on mobile development, and a full API reference.
 
 salmaoussahi@gmail.com
 salmasalma
+
+test@gmail.com
+testtest

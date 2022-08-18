@@ -5,7 +5,8 @@ abstract class AuthEvent extends Equatable {
   List<Object> get props => [];
 }
 
-// Lorsque l'utilisateur se connecte avec une adresse e-mail et un mot de passe, cet événement est appelé et [AuthRepository] est appelé pour se connecter à l'utilisateur
+// Lorsque l'utilisateur se connecte avec une adresse e-mail et un mot de passe, 
+//cet événement est appelé et [AuthRepository] est appelé pour se connecter à l'utilisateur
 class SignInRequested extends AuthEvent {
   final String email;
   final String password;

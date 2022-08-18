@@ -4,10 +4,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutterfirebase/bloc/user/user_bloc.dart';
 import 'package:flutterfirebase/bloc/user/user_event.dart';
 import 'package:flutterfirebase/bloc/user/user_state.dart';
-import 'package:flutterfirebase/pages/Authentication/SignIn/signin.dart';
+import 'package:flutterfirebase/pages/config.palette.dart';
+import 'package:flutterfirebase/pages/authentication.signin.dart';
 import 'package:flutterfirebase/pages/home.dart';
-import 'package:flutterfirebase/pages/widget/palette.dart';
-import 'package:flutterfirebase/pages/widget/solvit.logo.dart';
+import 'package:flutterfirebase/pages/config.solvit.logo.dart';
 
 class SignUp extends StatefulWidget {
   const SignUp({Key? key}) : super(key: key);
@@ -43,7 +43,6 @@ class _SignUpState extends State<SignUp> {
             BlocConsumer<AuthBloc, AuthState>(
               listener: (context, state) {
                 if (state is Authenticated) {
-                  // Navigating to the dashboard screen if the user is authenticated
                   Navigator.of(context).pushReplacement(
                     MaterialPageRoute(
                       builder: (context) => HomePage(),
@@ -51,18 +50,15 @@ class _SignUpState extends State<SignUp> {
                   );
                 }
                 if (state is AuthError) {
-                  // Displaying the error message if the user is not authenticated
                   ScaffoldMessenger.of(context)
                       .showSnackBar(SnackBar(content: Text(state.error)));
                 }
               },
               builder: (context, state) {
                 if (state is Loading) {
-                  // Displaying the loading indicator while the user is signing up
                   return const Center(child: CircularProgressIndicator());
                 }
                 if (state is UnAuthenticated) {
-                  // Displaying the sign up form if the user is not authenticated
                   return Expanded(
                     child: Center(
                       child: Padding(
@@ -120,7 +116,8 @@ class _SignUpState extends State<SignUp> {
                                             AutovalidateMode.onUserInteraction,
                                         validator: (value) {
                                           return value != null &&
-                                                  !EmailValidator.validate(value)
+                                                  !EmailValidator.validate(
+                                                      value)
                                               ? 'Entrer un email valid'
                                               : null;
                                         },
@@ -138,7 +135,8 @@ class _SignUpState extends State<SignUp> {
                                         autovalidateMode:
                                             AutovalidateMode.onUserInteraction,
                                         validator: (value) {
-                                          return value != null && value.length < 6
+                                          return value != null &&
+                                                  value.length < 6
                                               ? "Enteer min. 6 caractères"
                                               : null;
                                         },
@@ -148,7 +146,8 @@ class _SignUpState extends State<SignUp> {
                                       ),
                                       SizedBox(
                                         width:
-                                            MediaQuery.of(context).size.width * 0.7,
+                                            MediaQuery.of(context).size.width *
+                                                0.7,
                                         child: ElevatedButton(
                                           style: ElevatedButton.styleFrom(
                                               primary: Palette.blue),
@@ -158,7 +157,8 @@ class _SignUpState extends State<SignUp> {
                                           },
                                           child: const Text(
                                             'Créer un compte',
-                                            style: TextStyle(color: Colors.white),
+                                            style:
+                                                TextStyle(color: Colors.white),
                                           ),
                                         ),
                                       )
@@ -207,12 +207,8 @@ class _SignUpState extends State<SignUp> {
   void _createAccountWithEmailAndPassword(BuildContext context) {
     if (_formKey.currentState!.validate()) {
       BlocProvider.of<AuthBloc>(context).add(
-        SignUpRequested(
-          _emailController.text,
-          _passwordController.text,
-          _fnameController.text,
-          _lnameController.text
-        ),
+        SignUpRequested(_emailController.text, _passwordController.text,
+            _fnameController.text, _lnameController.text),
       );
     }
   }

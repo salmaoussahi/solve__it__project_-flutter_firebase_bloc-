@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutterfirebase/pages/Setting/reset_password.dart';
-import 'package:flutterfirebase/pages/Setting/Profil.dart';
-import 'package:flutterfirebase/pages/widget/palette.dart';
-
+import 'package:flutter_svg/svg.dart';
+import 'package:flutterfirebase/pages/setting.profil.dart';
+import 'package:flutterfirebase/pages/authentication.logout.dart';
+import 'package:flutterfirebase/pages/config.palette.dart';
+import 'package:flutterfirebase/pages/setting.reset_password.dart';
 class Setting extends StatefulWidget {
   const Setting({Key? key}) : super(key: key);
 
@@ -33,6 +34,7 @@ class _SettingState extends State<Setting> {
           SizedBox(
             height: 10,
           ),
+          SvgPicture.asset("assets/setting.svg",width: MediaQuery.of(context).size.width*0.8,),
           Column(
             children: [
               ListTile(
@@ -52,9 +54,16 @@ class _SettingState extends State<Setting> {
               ),
               ListTile(
                 title: Text("Modifier mot de passe"),
-                trailing: Icon(Icons.password,color: Palette.grey,),
+                trailing: Icon(Icons.password,color: Palette.yellow,),
                 onTap: (() {
                   Navigator.push(context, MaterialPageRoute(builder: ((context) => ResetPassword())));
+                }),
+              ),
+               ListTile(
+                title: Text("Se déconnecter"),
+                trailing: Icon(Icons.logout_rounded,color: Palette.yellow,),
+                onTap: (() {
+                  Navigator.push(context, MaterialPageRoute(builder: ((context) => Logout())));
                 }),
               ),
             ],
