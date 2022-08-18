@@ -123,5 +123,17 @@ class DatabaseBloc extends Bloc<DatabaseEvent, DatabaseState> {
         emit(InitialAddProblem());
       }
     });
+    // Lorsque l'utilisateur ajoute un problem,
+// nous envoyons l'événement DeleteGroupe à DatabaseBloc pour le gérer
+    on<DeleteGroupe>((event, emit) async {
+      emit(LodingDeleteGroupe());
+      try {
+        await databaserepository.deleteGroupe(event.groupeId);
+        emit(GroupeDeleted());
+      } catch (e) {
+        emit(ErrorDeleteGroupe(errormessage: e.toString()));
+        emit(InitialDeleteGroupe());
+      }
+    });
   }
 }

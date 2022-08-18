@@ -34,6 +34,12 @@ class _GroupeProblemState extends State<GroupeProblem> {
     _groupProblem(context);
   }
 
+  void _deleteGroupe(BuildContext context) {
+    BlocProvider.of<DatabaseBloc>(context).add(
+      DeleteGroupe(groupeId: widget.groupeId),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -72,6 +78,17 @@ class _GroupeProblemState extends State<GroupeProblem> {
                         fontSize: 18,
                         fontWeight: FontWeight.bold,
                         color: Palette.grey),
+                  ),
+                  trailing: IconButton(
+                    icon: Icon(
+                      Icons.delete_forever,
+                      color: Colors.red,
+                    ),
+                    onPressed: () {
+                      _deleteGroupe(context);
+                      Navigator.pop(context);
+                      // print(widget.groupeId);
+                    },
                   ),
                 ),
                 Row(
@@ -181,10 +198,15 @@ class _GroupeProblemState extends State<GroupeProblem> {
                                               builder: (context) => PlusDetail(
                                                     problemId:
                                                         data.docs[index].id,
-                                                    description: data.docs[index]['description'],
-                                                    isSolved: data.docs[index]['isSolved'],
-                                                    libelle: data.docs[index]['libelle'],
-                                                    userEmail: data.docs[index]['userEmail'],
+                                                    description:
+                                                        data.docs[index]
+                                                            ['description'],
+                                                    isSolved: data.docs[index]
+                                                        ['isSolved'],
+                                                    libelle: data.docs[index]
+                                                        ['libelle'],
+                                                    userEmail: data.docs[index]
+                                                        ['userEmail'],
                                                   )));
                                     },
                                     color: Palette.blue,

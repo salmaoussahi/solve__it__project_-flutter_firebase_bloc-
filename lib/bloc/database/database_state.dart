@@ -167,7 +167,6 @@ class ErrorAddComment extends DatabaseState {
   });
 }
 
-
 /******************************************************************************/
 /***************************l'état AddProblems*****************************/
 
@@ -184,6 +183,26 @@ class InitialAddProblem extends DatabaseState {}
 class ErrorAddProblem extends DatabaseState {
   String errormessage;
   ErrorAddProblem({
+    required this.errormessage,
+  });
+}
+
+/******************************************************************************/
+/***************************l'état DeleteGroupe*****************************/
+
+// Lorsque l'utilisateur se dirige vesr la page "Accueil",
+//l'état passe d'abord au chargement Loading.
+class LodingDeleteGroupe extends DatabaseState {}
+
+// Lorsque les données sont chargées, l'état passe à Loaded.
+class GroupeDeleted extends DatabaseState {}
+
+class InitialDeleteGroupe extends DatabaseState {}
+
+// Si une erreur se produit, l'état est changé en Error
+class ErrorDeleteGroupe extends DatabaseState {
+  String errormessage;
+  ErrorDeleteGroupe({
     required this.errormessage,
   });
 }

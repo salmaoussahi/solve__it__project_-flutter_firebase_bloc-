@@ -79,3 +79,12 @@ class AddProblemRequested extends DatabaseEvent {
     required this.groupeId,
   });
 }
+
+// Lorsque l'utilisateur supprimme un groupe ,
+//cet événement est appelé et [Databaserepository] est appelé
+//peffectuer le taitement
+class DeleteGroupe extends DatabaseEvent {
+  String groupeId;
+
+  DeleteGroupe({required this.groupeId});
+}

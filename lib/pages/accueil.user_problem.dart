@@ -70,7 +70,15 @@ class _AccueilState extends State<Accueil> {
                       return Center(child: CircularProgressIndicator());
                     }
                     final data = snapshot.requireData;
-
+                    if (data.size == 0) {
+                      return Column(
+                        children: [
+                          SvgPicture.asset("assets/nodata.svg",width: MediaQuery.of(context).size.width*0.9,),
+                          Text("Vous n'avez aucun problème"),
+                         
+                        ],
+                      );
+                    }
                     return ListView.builder(
                         itemCount: data.size,
                         itemBuilder: (context, index) {
@@ -86,7 +94,6 @@ class _AccueilState extends State<Accueil> {
                                   ),
                                   title: Column(
                                     children: [
-                                      
                                       Text(
                                         '${data.docs[index]['libelle']}',
                                         style: TextStyle(fontSize: 24),
@@ -103,10 +110,8 @@ class _AccueilState extends State<Accueil> {
                                       style: TextStyle(color: Palette.grey)),
                                 ),
                                 Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.end,
+                                  mainAxisAlignment: MainAxisAlignment.end,
                                   children: <Widget>[
-                                   
                                     MaterialButton(
                                       onPressed: () {
                                         Navigator.push(

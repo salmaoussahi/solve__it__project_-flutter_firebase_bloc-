@@ -104,4 +104,28 @@ class Databaserepository {
       throw Exception(e.toString());
     }
   }
+
+  //Supprimer un groupe avec ses problème et commentaire
+
+  Future<void> deleteGroupe(String groupeId) async {
+    FirebaseFirestore.instance.collection("Groupe").doc(groupeId).delete();
+    FirebaseFirestore.instance
+        .collection("Problem")
+        .where("groupeId", isEqualTo: groupeId)
+        .get()
+        .then((value) {
+      for (DocumentSnapshot ds in value.docs) {
+        FirebaseFirestore.instance
+            .collection("Commentaire")
+            .where("problemId", isEqualTo: ds.reference.id)
+            .get()
+            .then((value) {
+          for (DocumentSnapshot ds in value.docs) {
+            ds.reference.delete();
+          }
+        });
+        ds.reference.delete();
+      }
+    });
+  }
 }
