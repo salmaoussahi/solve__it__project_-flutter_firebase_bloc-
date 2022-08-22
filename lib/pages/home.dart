@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:flutterfirebase/pages/groupe.dart';
-import 'package:flutterfirebase/pages/authentication.logout.dart';
-import 'package:flutterfirebase/pages/accueil.user_problem.dart';
-import 'package:flutterfirebase/pages/config.palette.dart';
-import 'package:flutterfirebase/pages/setting.dart';
-import 'package:flutterfirebase/pages/config.solvit.logo.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutterfirebase/bloc/theme/theme_bloc.dart';
+import 'package:flutterfirebase/bloc/theme/theme_event.dart';
+import 'package:flutterfirebase/bloc/theme/theme_state.dart';
+import 'package:flutterfirebase/pages/config/config.theme.dart';
+import 'package:flutterfirebase/pages/groupe/groupe.page.dart';
+import 'package:flutterfirebase/pages/problem/problem.userProblem.dart';
+import 'package:flutterfirebase/pages/config/config.palette.dart';
+import 'package:flutterfirebase/pages/setting/setting.page.dart';
+import 'package:flutterfirebase/pages/config/config.solvit.logo.dart';
 
 class HomePage extends StatefulWidget {
   HomePage({Key? key}) : super(key: key);
@@ -27,9 +31,41 @@ class _HomePageState extends State<HomePage> {
         automaticallyImplyLeading: false,
         elevation: 0,
         title: Row(
-          mainAxisAlignment: MainAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             SlovitLogo(),
+            Row(mainAxisSize: MainAxisSize.min, children: [
+              //Dark Theme Button
+              IconButton(onPressed: () {
+                BlocProvider.of<ThemeBloc>(context)
+                    .add(ThemeEvent(theme: MyTheme.darkTheme));
+              }, icon: BlocBuilder<ThemeBloc, ThemeState>(
+                builder: (context, state) {
+                  return Icon(
+                    Icons.dark_mode,
+                    color: state.themeData == MyTheme.darkTheme
+                        ? Palette.yellow
+                        : Palette.grey,
+                  );
+                },
+              )),
+
+              //Light Theme Button
+
+              IconButton(onPressed: () {
+                BlocProvider.of<ThemeBloc>(context)
+                    .add(ThemeEvent(theme: MyTheme.lightTheme));
+              }, icon: BlocBuilder<ThemeBloc, ThemeState>(
+                builder: (context, state) {
+                  return Icon(
+                    Icons.light_mode,
+                    color: state.themeData == MyTheme.lightTheme
+                        ? Palette.yellow
+                        : Palette.grey,
+                  );
+                },
+              )),
+            ]),
           ],
         ),
       ),
@@ -41,7 +77,7 @@ class _HomePageState extends State<HomePage> {
         backgroundColor: Palette.yellow,
         child: Icon(
           Icons.home,
-          color: Palette.blue,
+          color: Colors.white,
         ),
         onPressed: () {
           Navigator.push(

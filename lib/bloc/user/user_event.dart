@@ -1,3 +1,4 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:equatable/equatable.dart';
 
 abstract class AuthEvent extends Equatable {
@@ -5,7 +6,7 @@ abstract class AuthEvent extends Equatable {
   List<Object> get props => [];
 }
 
-// Lorsque l'utilisateur se connecte avec une adresse e-mail et un mot de passe, 
+// Lorsque l'utilisateur se connecte avec une adresse e-mail et un mot de passe,
 //cet événement est appelé et [AuthRepository] est appelé pour se connecter à l'utilisateur
 class SignInRequested extends AuthEvent {
   final String email;
@@ -21,7 +22,7 @@ class SignUpRequested extends AuthEvent {
   final String f_name;
   final String l_name;
 
-  SignUpRequested(this.email, this.password,this.f_name,this.l_name);
+  SignUpRequested(this.email, this.password, this.f_name, this.l_name);
 }
 
 // Lorsque l'utilisateur se connecte avec Google, cet événement est appelé et [AuthRepository] est appelé pour se connecter à l'utilisateur.
@@ -29,3 +30,14 @@ class GoogleSignInRequested extends AuthEvent {}
 
 // Lorsque l'utilisateur se déconnecte, cet événement est appelé et [AuthRepository] est appelé pour déconnecter l'utilisateur
 class SignOutRequested extends AuthEvent {}
+
+class UserProfilRequested extends AuthEvent {}
+
+class UserProfilUpdateRequested extends AuthEvent {
+  String nom;
+  String prenom;
+  UserProfilUpdateRequested({
+    required this.nom,
+    required this.prenom,
+  });
+}

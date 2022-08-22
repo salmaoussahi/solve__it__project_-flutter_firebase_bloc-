@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:flutterfirebase/pages/config.palette.dart';
-import 'package:flutterfirebase/pages/authentication.signin.dart';
-import 'package:flutterfirebase/pages/config.solvit.logo.dart';
+import 'package:flutterfirebase/pages/config/config.palette.dart';
+import 'package:flutterfirebase/pages/authentication/authentication.signin.dart';
+import 'package:flutterfirebase/pages/config/config.solvit.logo.dart';
 
 import 'package:flutterfirebase/repository/user.repository.dart';
 
@@ -26,15 +26,15 @@ class _FirstPageState extends State<FirstPage> {
             Column(
               children: [
                 SlovitLogo(),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    SvgPicture.asset(
-                      "assets/lamp.svg",
-                      width: 50,
-                    )
-                  ],
-                ),
+                // Row(
+                //   mainAxisAlignment: MainAxisAlignment.end,
+                //   children: [
+                //     SvgPicture.asset(
+                //       "assets/lamp.svg",
+                //       width: 50,
+                //     )
+                //   ],
+                // ),
               ],
             ),
             SvgPicture.asset(
@@ -48,10 +48,8 @@ class _FirstPageState extends State<FirstPage> {
                     Navigator.push(context,
                         MaterialPageRoute(builder: (context) => SignIn()));
                   },
-                  color: Palette.blue,
                   minWidth: MediaQuery.of(context).size.width * 0.9,
-                  child: Text("Connecter vous !",
-                      style: TextStyle(color: Colors.white)),
+                  child: Text("Connecter vous !",),
                 )
               ],
             )

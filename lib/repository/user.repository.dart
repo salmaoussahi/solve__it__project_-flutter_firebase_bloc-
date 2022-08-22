@@ -80,4 +80,23 @@ class AuthRepository {
       throw Exception(e.toString());
     }
   }
+
+  Future<Future<DocumentSnapshot<Map<String, dynamic>>>> userProfile() async {
+    return FirebaseFirestore.instance
+        .collection("UserData")
+        .doc(FirebaseAuth.instance.currentUser!.uid)
+        .get();
+  }
+
+   Future<void> updateUser(String nom, String prenom) {
+      return FirebaseFirestore.instance
+          .collection('UserData')
+          .doc(FirebaseAuth.instance.currentUser!.uid)
+          .update({
+            'last_name': nom,
+            'first_name': prenom,
+          })
+          .then((value) => print("User Updated"))
+          .catchError((error) => print("Failed to update user: $error"));
+    }
 }
