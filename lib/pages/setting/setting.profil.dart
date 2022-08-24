@@ -1,5 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -83,7 +83,7 @@ class _ProfilState extends State<Profil> {
                       child: BlocBuilder<ThemeBloc, ThemeState>(
                         builder: (context, state) {
                           return Text(
-                            "Profile",
+                            AppLocalizations.of(context)!.titre_setting,
                             style: TextStyle(
                                 fontSize: 25,
                                 fontWeight: FontWeight.bold,
@@ -98,7 +98,7 @@ class _ProfilState extends State<Profil> {
                 ),
               ),
               SvgPicture.asset(
-                "assets/user.svg",
+                "assets/images/user.svg",
                 width: MediaQuery.of(context).size.width * 0.7,
               ),
               Column(
@@ -132,17 +132,21 @@ class _ProfilState extends State<Profil> {
                               return Column(
                                 children: [
                                   ListTile(
-                                    title: Row(
-                                      children: [
-                                        Text(
-                                          'Email : ',
-                                          textAlign: TextAlign.center,
-                                        ),
-                                        Text(
-                                          '${data['email']}',
-                                          textAlign: TextAlign.center,
-                                        ),
-                                      ],
+                                    title: FittedBox(
+                                      fit: BoxFit.fill,
+                                      child: Row(
+                                        children: [
+                                          
+                                          Text(
+                                            AppLocalizations.of(context)!.email+" :",
+                                            textAlign: TextAlign.center,
+                                          ),
+                                          Text(
+                                            '${data['email']}',
+                                            textAlign: TextAlign.center,
+                                          ),
+                                        ],
+                                      ),
                                     ),
                                     leading: Icon(
                                       Icons.person,
@@ -153,7 +157,7 @@ class _ProfilState extends State<Profil> {
                                     title: Row(
                                       children: [
                                         Text(
-                                          'Nom : ',
+                                          AppLocalizations.of(context)!.nom+" :",
                                           textAlign: TextAlign.center,
                                         ),
                                         Text(
@@ -171,7 +175,7 @@ class _ProfilState extends State<Profil> {
                                     title: Row(
                                       children: [
                                         Text(
-                                          'Prénom : ',
+                                          AppLocalizations.of(context)!.prenom+" :",
                                           textAlign: TextAlign.center,
                                         ),
                                         Text(
@@ -198,8 +202,8 @@ class _ProfilState extends State<Profil> {
                                                   builder: ((context) =>
                                                       ModifierProfil(nom: data['last_name'],prenom:data['first_name']))));
                                         },
-                                        child: const Text(
-                                          'Modifier votre profile',
+                                        child:  Text(
+                                          AppLocalizations.of(context)!.modifier_prof,
                                         ),
                                       ),
                                     ),

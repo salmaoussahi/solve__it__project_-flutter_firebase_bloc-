@@ -1,0 +1,37 @@
+{
+    "mes_problm":"My Problem",
+    "connecter_vous":"Log in!",
+    "login_titre":"Login Page",
+    "email_hint":"Enter your email",
+    "password_hint":"Enter your password",
+    "forgot_password":"You forgot your password",
+    "pas_de_cpt":"You do not have an account?",
+    "creer_cpt":"Create an account",
+
+    "signup_titre":"Create an account",
+    "nom_hint":"Enter your last name",
+    "prenom_hint":"Enter your first name",
+    "deja_cpt":"Do you already have an account",
+
+    "valid_email":"Enter a valid email",
+    "valid_password":"Enter min. 6 characters",
+
+
+    "bottom_bar_grp":"Groups",
+    "bottom_bar_param":"Setting",
+    "voir_commts":"See comments",
+    
+    "titre_setting":"Setting",
+    "profil":"Profil",
+    "theme":"Theme",
+    "langue":"Language",
+    "modifier_mdp":"Resset Password",
+    "deconnecter":"Log Out",
+    "logout_quest":"Do you want to disconnect?",
+    "oui":"Yes",
+    "non":"No",
+    "email":"Email",
+    "nom":"Last Name",
+    "prenom":"First Name",
+    "modifier_prof":"Set your profil"
+}

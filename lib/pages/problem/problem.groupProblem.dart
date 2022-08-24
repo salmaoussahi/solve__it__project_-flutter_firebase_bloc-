@@ -44,6 +44,7 @@ class _GroupeProblemState extends State<GroupeProblem> {
         .add(GroupProblemsRequested(problemId: widget.groupeId));
     BlocProvider.of<GoupeBloc>(context)
         .add(GroupMembresrquested(groupeId: widget.groupeId));
+    BlocProvider.of<GoupeBloc>(context).add(UserGroupeRequested());
   }
 
   void _deleteGroupe(BuildContext context) {
@@ -248,7 +249,7 @@ class _GroupeProblemState extends State<GroupeProblem> {
                       ? Column(
                           children: [
                             SvgPicture.asset(
-                              "assets/nodata.svg",
+                              "assets/images/nodata.svg",
                               width: MediaQuery.of(context).size.width * 0.5,
                             ),
                             Text("Ce groupe ne contient aucun problème !")

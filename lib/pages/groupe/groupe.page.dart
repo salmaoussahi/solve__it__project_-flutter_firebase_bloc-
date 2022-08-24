@@ -82,7 +82,7 @@ class _GroupeState extends State<Groupe> {
             height: 20,
           ),
           SvgPicture.asset(
-            "assets/group.svg",
+            "assets/images/group.svg",
             width: MediaQuery.of(context).size.width * 0.7,
           ),
           ListTile(

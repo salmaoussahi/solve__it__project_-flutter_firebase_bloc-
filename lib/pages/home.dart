@@ -9,6 +9,7 @@ import 'package:flutterfirebase/pages/problem/problem.userProblem.dart';
 import 'package:flutterfirebase/pages/config/config.palette.dart';
 import 'package:flutterfirebase/pages/setting/setting.page.dart';
 import 'package:flutterfirebase/pages/config/config.solvit.logo.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class HomePage extends StatefulWidget {
   HomePage({Key? key}) : super(key: key);
@@ -112,7 +113,7 @@ class _HomePageState extends State<HomePage> {
                                 ? Palette.yellow
                                 : Colors.white),
                         Text(
-                          "Groupes",
+                          AppLocalizations.of(context)!.bottom_bar_grp,
                           style: TextStyle(
                               color: currentTab == 1
                                   ? Palette.yellow
@@ -142,7 +143,7 @@ class _HomePageState extends State<HomePage> {
                                 ? Palette.yellow
                                 : Colors.white),
                         Text(
-                          "Parametre",
+                          AppLocalizations.of(context)!.bottom_bar_param,
                           style: TextStyle(
                               color: currentTab == 2
                                   ? Palette.yellow

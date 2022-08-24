@@ -11,6 +11,7 @@ import 'package:flutterfirebase/pages/authentication/authentication.signup.dart'
 import 'package:flutterfirebase/pages/authentication/authentication.forgot_password.dart';
 import 'package:flutterfirebase/pages/home.dart';
 import 'package:flutterfirebase/pages/config/config.solvit.logo.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 
 class SignIn extends StatefulWidget {
@@ -68,8 +69,8 @@ class _SignInState extends State<SignIn> {
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                const Text(
-                                  "Page de Connexion",
+                                 Text(
+                                  AppLocalizations.of(context)!.login_titre,
                                   style: TextStyle(
                                       fontSize: 30,
                                       fontWeight: FontWeight.bold),
@@ -87,8 +88,8 @@ class _SignInState extends State<SignIn> {
                                           keyboardType:
                                               TextInputType.emailAddress,
                                           controller: _emailController,
-                                          decoration: const InputDecoration(
-                                            hintText: "Entrer votre email",
+                                          decoration:  InputDecoration(
+                                            hintText: AppLocalizations.of(context)!.email_hint,
                                             border: OutlineInputBorder(),
                                           ),
                                           autovalidateMode: AutovalidateMode
@@ -97,7 +98,8 @@ class _SignInState extends State<SignIn> {
                                             return value != null &&
                                                     !EmailValidator.validate(
                                                         value)
-                                                ? 'Enter a valid email'
+                                                ? AppLocalizations.of(context)!.valid_email
+
                                                 : null;
                                           },
                                         ),
@@ -111,7 +113,7 @@ class _SignInState extends State<SignIn> {
                                           controller: _passwordController,
                                           decoration: InputDecoration(
                                               hintText:
-                                                  "Entrer votre mot de passe",
+                                                  AppLocalizations.of(context)!.password_hint,
                                               border: OutlineInputBorder(),
                                              ),
                                           autovalidateMode: AutovalidateMode
@@ -119,7 +121,7 @@ class _SignInState extends State<SignIn> {
                                           validator: (value) {
                                             return value != null &&
                                                     value.length < 6
-                                                ? "Enter min. 6 characters"
+                                                ? AppLocalizations.of(context)!.valid_password
                                                 : null;
                                           },
                                         ),
@@ -137,8 +139,8 @@ class _SignInState extends State<SignIn> {
                                               _authenticateWithEmailAndPassword(
                                                   context);
                                             },
-                                            child: const Text(
-                                              'Connecter-Vous',
+                                            child:  Text(
+                                              AppLocalizations.of(context)!.connecter_vous,
                                              
                                             ),
                                           ),
@@ -152,7 +154,7 @@ class _SignInState extends State<SignIn> {
                                                           ForgotPassword())));
                                             },
                                             child: Text(
-                                              'Vous avez oublier votre mot de passe',
+                                              AppLocalizations.of(context)!.forgot_password,
                                               style: TextStyle(
                                                   color: Palette.yellow),
                                             ))
@@ -172,7 +174,7 @@ class _SignInState extends State<SignIn> {
                                 // ),
                                 Column(
                                   children: [
-                                    const Text("Vous n'avez pas de compte?"),
+                                     Text(AppLocalizations.of(context)!.pas_de_cpt),
                                     MaterialButton(
                                       onPressed: () {
                                         Navigator.pushReplacement(
@@ -182,7 +184,7 @@ class _SignInState extends State<SignIn> {
                                                   const SignUp()),
                                         );
                                       },
-                                      child:  Text("Créer un compte"),
+                                      child:  Text(AppLocalizations.of(context)!.creer_cpt),
                                     )
                                   ],
                                 )

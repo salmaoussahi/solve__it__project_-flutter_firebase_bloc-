@@ -102,7 +102,7 @@ class _UserGroupeState extends State<UserGroupe> {
                         return data.size == 0
                             ? Column(
                                 children: [
-                                  SvgPicture.asset("assets/nodata.svg"),
+                                  SvgPicture.asset("assets/omages/nodata.svg"),
                                   Text(
                                     "Vous n'avez pas de groupe",
                                     style: TextStyle(color: Palette.yellow),

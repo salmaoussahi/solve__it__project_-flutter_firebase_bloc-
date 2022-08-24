@@ -66,7 +66,7 @@ class ResetPassword extends StatelessWidget {
                   Center(
                     child: Column(
                       children: [
-                        SvgPicture.asset("assets/ressetpassword.svg"),
+                        SvgPicture.asset("assets/images/ressetpassword.svg"),
                         SizedBox(
                           width: MediaQuery.of(context).size.width * 0.7,
                           child: ElevatedButton(

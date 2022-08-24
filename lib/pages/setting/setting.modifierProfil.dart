@@ -118,7 +118,7 @@ class _ModifierProfilState extends State<ModifierProfil> {
                 ),
               ),
               SvgPicture.asset(
-                "assets/user.svg",
+                "assets/images/user.svg",
                 width: MediaQuery.of(context).size.width * 0.7,
               ),
               BlocConsumer<AuthBloc, AuthState>(

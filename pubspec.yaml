@@ -29,6 +29,10 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  flutter_localizations: # Add this line
+    sdk: flutter         # Add this 
+  intl: ^0.17.0 # Ajouter cette ligne    
+
 
 
   # The following adds the Cupertino Icons font to your application.
@@ -69,22 +73,25 @@ flutter_icons:
     icon_size: 48 
 
 flutter:
+  generate: true # Ajoutez cette ligne
 
   uses-material-design: true
 
   # To add assets to your application, add an assets section, like this:
   assets:
-    - assets/lamp.svg
-    - assets/image1.svg
-    - assets/ressetpassword.svg
-    - assets/nodata.svg
-    - assets/mesproblem.svg
-    - assets/setting.svg
-    - assets/group.svg
-    - assets/user.svg
-    - assets/icon.png
-    - assets/france.png
-    - assets/united-kingdom.png
+    - assets/images/lamp.svg
+    - assets/images/image1.svg
+    - assets/images/ressetpassword.svg
+    - assets/images/nodata.svg
+    - assets/images/mesproblem.svg
+    - assets/images/setting.svg
+    - assets/images/group.svg
+    - assets/images/user.svg
+    - assets/images/icon.png
+    - assets/images/france.png
+    - assets/images/arab.png
+    - assets/images/united-kingdom.png
+
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

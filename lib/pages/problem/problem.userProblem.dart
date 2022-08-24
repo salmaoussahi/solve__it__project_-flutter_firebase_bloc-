@@ -10,7 +10,7 @@ import 'package:flutterfirebase/bloc/theme/theme_state.dart';
 import 'package:flutterfirebase/pages/config/config.palette.dart';
 import 'package:flutterfirebase/pages/commentaire/commentaire.groupComments.dart';
 import 'package:flutterfirebase/pages/config/config.theme.dart';
-
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 class Accueil extends StatefulWidget {
   @override
   State<Accueil> createState() => _AccueilState();
@@ -43,7 +43,8 @@ class _AccueilState extends State<Accueil> {
                   child: BlocBuilder<ThemeBloc, ThemeState>(
                     builder: (context, state) {
                       return Text(
-                        "Mes problèmes",
+                        AppLocalizations.of(context)!.mes_problm,
+                        
                         style: TextStyle(
                             fontSize: 25,
                             fontWeight: FontWeight.bold,
@@ -57,7 +58,7 @@ class _AccueilState extends State<Accueil> {
                 Padding(
                   padding: const EdgeInsets.only(right: 8.0),
                   child: SvgPicture.asset(
-                    "assets/mesproblem.svg",
+                    "assets/images/mesproblem.svg",
                     width: 100,
                   ),
                 )
@@ -69,7 +70,9 @@ class _AccueilState extends State<Accueil> {
             Expanded(child: BlocBuilder<ProblemBloc, ProblemState>(
                 builder: (((context, state) {
               if (state is LodingUserProblems) {
-                return CircularProgressIndicator(color: Palette.yellow,);
+                return CircularProgressIndicator(
+                  color: Palette.yellow,
+                );
               }
               if (state is ErrorUserProblems) {
                 return Text("erreur : " + state.errormessage);
@@ -83,14 +86,17 @@ class _AccueilState extends State<Accueil> {
                       return Text('error');
                     }
                     if (snapshot.connectionState == ConnectionState.waiting) {
-                      return Center(child: CircularProgressIndicator(color: Palette.yellow,));
+                      return Center(
+                          child: CircularProgressIndicator(
+                        color: Palette.yellow,
+                      ));
                     }
                     final data = snapshot.requireData;
                     if (data.size == 0) {
                       return Column(
                         children: [
                           SvgPicture.asset(
-                            "assets/nodata.svg",
+                            "assets/images/nodata.svg",
                             width: MediaQuery.of(context).size.width,
                           ),
                           Text(
@@ -155,7 +161,7 @@ class _AccueilState extends State<Accueil> {
                                                     )));
                                       },
                                       child: Text(
-                                        "Voir les commentaires",
+                                        AppLocalizations.of(context)!.voir_commts,
                                         style: TextStyle(color: Palette.yellow),
                                       ),
                                     )

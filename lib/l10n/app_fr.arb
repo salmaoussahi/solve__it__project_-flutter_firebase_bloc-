@@ -1,0 +1,37 @@
+{   
+    "mes_problm":"Mes problèmes",
+    "connecter_vous":"Connecter vous !",
+    "login_titre":"Page de Connexion",
+    "email_hint":"Entrer votre email",
+    "password_hint":"Entrer votre mot de passe",
+    "forgot_password":"Vous avez oublier votre mot de passe",
+    "pas_de_cpt":"Vous n'avez pas de compte?",
+    "creer_cpt":"Créer un compte",
+
+    "signup_titre":"Créer un compte",
+    "nom_hint":"Entrer votre nom",
+    "prenom_hint":"Entrer votre prenom",
+    "deja_cpt":"Avez-vous déjà un compte",
+
+    "valid_email":"Entrer un email valide",
+    "valid_password":"Entrer minimum 6 caractères",
+
+
+    "bottom_bar_grp":"Groupes",
+    "bottom_bar_param":"Paramètre",
+    "voir_commts":"Voir les commentaires",
+    
+    "titre_setting":"Paramètre",
+    "profil":"Profile",
+    "theme":"Thème",
+    "langue":"Langue",
+    "modifier_mdp":"Modifier Mot de passe",
+    "deconnecter":"Se déconnecter"  ,
+    "logout_quest":"Voulez-vous vous déconnecter?",
+    "oui":"Oui",
+    "non":"Non"  ,
+    "email":"Email",
+    "nom":"Nom",
+    "prenom":"Prenom",
+    "modifier_prof":"Modifier Profil"
+}

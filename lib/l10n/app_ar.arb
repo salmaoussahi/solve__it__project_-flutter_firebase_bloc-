@@ -1,0 +1,37 @@
+{
+    "mes_problm":"مشاكلي",
+    "connecter_vous":"تسجيل الدخول!",
+    "login_titre":"صفحة تسجيل الدخول",
+    "email_hint":"أدخل بريدك الإلكتروني",
+    "password_hint":"ادخل رقمك السري",
+    "forgot_password":" نسيت كلمة المرور الخاصة بك",
+    "pas_de_cpt":"لا يوجد لديك حساب؟",
+    "creer_cpt":"إفتح حساب",
+
+    "signup_titre":"إفتح حساب",
+    "nom_hint":"أدخل الإسم الشخصي",
+    "prenom_hint":"أدخل الإسم العائلي",
+    "deja_cpt":"هل لديك حساب",
+
+    "valid_email":"أدخل بريد إلكتروني متاح",
+    "valid_password":"أدخل 6 حروف على الأقل",
+
+
+    "bottom_bar_grp":"مجموعات",
+    "bottom_bar_param":"إعدادات",
+    "voir_commts":"عرض تعليقات",
+
+    "titre_setting":"إعدادات",
+    "profil":"الملف الشخصي",
+    "theme":"الخلفية",
+    "langue":"اللغة",
+    "modifier_mdp":"إعادة تعيين كلمة المرور",
+    "deconnecter":"تسجيل خروج",
+    "logout_quest":"هل تريد فعلا الخروج؟",
+    "oui":"نعم",
+    "non":"لا",
+    "email":"البريد الالكتروني",
+    "nom":"الاسم العائلي",
+    "prenom":"الاسم الشخصي",
+    "modifier_prof":"تعديل الملف الشخصي"
+}

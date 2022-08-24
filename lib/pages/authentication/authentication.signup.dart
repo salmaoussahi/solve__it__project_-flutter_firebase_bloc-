@@ -8,6 +8,7 @@ import 'package:flutterfirebase/pages/config/config.palette.dart';
 import 'package:flutterfirebase/pages/authentication/authentication.signin.dart';
 import 'package:flutterfirebase/pages/home.dart';
 import 'package:flutterfirebase/pages/config/config.solvit.logo.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class SignUp extends StatefulWidget {
   const SignUp({Key? key}) : super(key: key);
@@ -56,7 +57,9 @@ class _SignUpState extends State<SignUp> {
               },
               builder: (context, state) {
                 if (state is Loading) {
-                  return CircularProgressIndicator(color: Palette.yellow,);
+                  return CircularProgressIndicator(
+                    color: Palette.yellow,
+                  );
                 }
                 if (state is UnAuthenticated) {
                   return Expanded(
@@ -67,8 +70,8 @@ class _SignUpState extends State<SignUp> {
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              const Text(
-                                "Créer un compte",
+                              Text(
+                                AppLocalizations.of(context)!.signup_titre,
                                 style: TextStyle(
                                   fontSize: 38,
                                   fontWeight: FontWeight.bold,
@@ -85,8 +88,10 @@ class _SignUpState extends State<SignUp> {
                                       TextFormField(
                                         cursorColor: Colors.grey,
                                         controller: _fnameController,
-                                        decoration: const InputDecoration(
-                                          hintText: "Entrer votre prénom",
+                                        decoration: InputDecoration(
+                                          hintText:
+                                              AppLocalizations.of(context)!
+                                                  .prenom_hint,
                                           border: OutlineInputBorder(),
                                         ),
                                         autovalidateMode:
@@ -98,8 +103,10 @@ class _SignUpState extends State<SignUp> {
                                       TextFormField(
                                         cursorColor: Colors.grey,
                                         controller: _lnameController,
-                                        decoration: const InputDecoration(
-                                          hintText: "Entrer votre nom",
+                                        decoration: InputDecoration(
+                                          hintText:
+                                              AppLocalizations.of(context)!
+                                                  .nom_hint,
                                           border: OutlineInputBorder(),
                                         ),
                                         autovalidateMode:
@@ -111,8 +118,10 @@ class _SignUpState extends State<SignUp> {
                                       TextFormField(
                                         cursorColor: Colors.grey,
                                         controller: _emailController,
-                                        decoration: const InputDecoration(
-                                          hintText: "Entrer votre email",
+                                        decoration: InputDecoration(
+                                          hintText:
+                                              AppLocalizations.of(context)!
+                                                  .email_hint,
                                           border: OutlineInputBorder(),
                                         ),
                                         autovalidateMode:
@@ -121,7 +130,7 @@ class _SignUpState extends State<SignUp> {
                                           return value != null &&
                                                   !EmailValidator.validate(
                                                       value)
-                                              ? 'Entrer un email valid'
+                                              ? AppLocalizations.of(context)!.valid_email
                                               : null;
                                         },
                                       ),
@@ -132,8 +141,10 @@ class _SignUpState extends State<SignUp> {
                                         cursorColor: Colors.grey,
                                         obscureText: true,
                                         controller: _passwordController,
-                                        decoration: const InputDecoration(
-                                          hintText: "Entrer votre mot de passe",
+                                        decoration: InputDecoration(
+                                          hintText:
+                                              AppLocalizations.of(context)!
+                                                  .password_hint,
                                           border: OutlineInputBorder(),
                                         ),
                                         autovalidateMode:
@@ -141,7 +152,7 @@ class _SignUpState extends State<SignUp> {
                                         validator: (value) {
                                           return value != null &&
                                                   value.length < 6
-                                              ? "Enteer min. 6 caractères"
+                                              ? AppLocalizations.of(context)!.valid_password
                                               : null;
                                         },
                                       ),
@@ -153,14 +164,13 @@ class _SignUpState extends State<SignUp> {
                                             MediaQuery.of(context).size.width *
                                                 0.7,
                                         child: ElevatedButton(
-                                         
                                           onPressed: () {
                                             _createAccountWithEmailAndPassword(
                                                 context);
                                           },
-                                          child: const Text(
-                                            'Créer un compte',
-                                           
+                                          child: Text(
+                                            AppLocalizations.of(context)!
+                                                .creer_cpt,
                                           ),
                                         ),
                                       )
@@ -168,7 +178,7 @@ class _SignUpState extends State<SignUp> {
                                   ),
                                 ),
                               ),
-                              const Text("Avez-vous déjà un compte"),
+                              Text(AppLocalizations.of(context)!.deja_cpt),
                               MaterialButton(
                                 onPressed: () {
                                   Navigator.pushReplacement(
@@ -177,7 +187,9 @@ class _SignUpState extends State<SignUp> {
                                         builder: (context) => const SignIn()),
                                   );
                                 },
-                                child:  Text("Connecter-Vous",),
+                                child: Text(
+                                  AppLocalizations.of(context)!.connecter_vous,
+                                ),
                               ),
                               // const Text("Connectez-vous avec Google"),
                               // IconButton(

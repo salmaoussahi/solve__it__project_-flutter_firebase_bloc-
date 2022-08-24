@@ -11,6 +11,8 @@ import 'package:flutterfirebase/pages/authentication/authentication.signin.dart'
 import 'package:flutterfirebase/pages/config/config.solvit.logo.dart';
 import 'package:flutterfirebase/pages/config/config.theme.dart';
 import 'package:flutterfirebase/pages/home.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 
 class Logout extends StatelessWidget {
   final user = FirebaseAuth.instance.currentUser!;
@@ -67,7 +69,7 @@ class Logout extends StatelessWidget {
                     },
                   ),
                   Text(
-                    'Voulez-vous vous déconnecter ?',
+                   AppLocalizations.of(context)!.logout_quest,
                     style: const TextStyle(fontSize: 20, color: Colors.grey),
                     textAlign: TextAlign.center,
                   ),
@@ -79,7 +81,7 @@ class Logout extends StatelessWidget {
                   ElevatedButton(
                     style: ElevatedButton.styleFrom(primary: Palette.yellow),
                     child: Text(
-                      'Oui',
+                      AppLocalizations.of(context)!.oui,
                       style: TextStyle(color: Palette.blue),
                     ),
                     onPressed: () {
@@ -89,8 +91,8 @@ class Logout extends StatelessWidget {
                   ),
                   ElevatedButton(
                     style: ElevatedButton.styleFrom(primary: Palette.blue),
-                    child: const Text(
-                      'Non',
+                    child:  Text(
+                      AppLocalizations.of(context)!.non,
                       style: TextStyle(color: Colors.white),
                     ),
                     onPressed: () {
