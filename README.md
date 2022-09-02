@@ -23,5 +23,8 @@ Installer [Flutter Sdk](https://docs.flutter.dev/get-started/install)
 ### Paramétrage
 ![alt text](screen2.png)
 
-### Ajout dun groupe
+### Ajout d'un groupe
+![alt text](screen3.png)
+
+### Ajout d'un problème
 ![alt text](screen3.png)
