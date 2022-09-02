@@ -28,3 +28,9 @@ Installer [Flutter Sdk](https://docs.flutter.dev/get-started/install)
 
 ### Ajout d'un problème
 ![alt text](screen4.png)
+
+### Ajout d'un membre
+![alt text](screen5.png)
+
+### Ajout d'un commentaire
+![alt text](screen6.png)
