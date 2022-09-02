@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutterfirebase/bloc/language/language_bloc.dart';
 import 'package:flutterfirebase/bloc/theme/theme_bloc.dart';
 import 'package:flutterfirebase/bloc/theme/theme_state.dart';
 import 'package:flutterfirebase/bloc/user/user_bloc.dart';
@@ -33,12 +34,18 @@ class Logout extends StatelessWidget {
         ),
         backgroundColor: Colors.transparent,
         elevation: 0,
-        title: Row(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            SlovitLogo(),
-          ],
-        ),
+         title: BlocBuilder<LanguageBloc, SelectedLangue>(
+            builder: (context, languestate) {
+              return Row(
+                mainAxisAlignment: languestate.locale == Locale("ar", "")
+                    ? MainAxisAlignment.end
+                    : MainAxisAlignment.start,
+                children: [
+                  SlovitLogo(),
+                ],
+              );
+            },
+          ),
       ),
       body: BlocListener<AuthBloc, AuthState>(
         listener: (context, state) {

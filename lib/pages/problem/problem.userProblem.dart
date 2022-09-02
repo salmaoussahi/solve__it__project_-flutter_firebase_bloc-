@@ -100,7 +100,7 @@ class _AccueilState extends State<Accueil> {
                             width: MediaQuery.of(context).size.width,
                           ),
                           Text(
-                            "Vous n'avez aucun problème",
+                            AppLocalizations.of(context)!.pas_de_prob,
                             style: TextStyle(color: Palette.yellow),
                           ),
                         ],

@@ -114,18 +114,19 @@ class _SettingState extends State<Setting> {
                         TextButton(onPressed: (() {
                           print('franc');
                           BlocProvider.of<LanguageBloc>(context)
-                              .add(ToFrensh());
+                              .add(ToFrench(locale: Locale("fr", "")));
                         }), child: BlocBuilder<LanguageBloc, SelectedLangue>(
                           builder: (context, state) {
+                            print(state.locale);
                             return ClipRRect(
-                              borderRadius: BorderRadius.circular(50.0),
+                              borderRadius: BorderRadius.circular(5.0),
                               child: Container(
-                                height: 70.0,
-                                width: 70.0,
+                                height: 50.0,
+                                width: 50.0,
                                 color: state.locale == Locale("fr", "")
                                     ? Palette.grey
                                     : Colors.transparent,
-                                child: Image.asset("assets/images/france.png"),
+                                child: Image.asset("assets/images/france.png",width: 20,),
                               ),
                             );
                           },
@@ -134,20 +135,21 @@ class _SettingState extends State<Setting> {
                           onPressed: (() {
                             print('eng');
                             BlocProvider.of<LanguageBloc>(context)
-                                .add(ToEnglish());
+                                .add(ToEnglish(locale: Locale("en", "")));
                           }),
                           child: BlocBuilder<LanguageBloc, SelectedLangue>(
                               builder: (context, state) {
+                            print(state.locale);
                             return ClipRRect(
-                              borderRadius: BorderRadius.circular(50.0),
+                              borderRadius: BorderRadius.circular(5.0),
                               child: Container(
-                                height: 70.0,
-                                width: 70.0,
+                                height: 50.0,
+                                width: 50.0,
                                 color: state.locale == Locale("en", "")
                                     ? Palette.grey
                                     : Colors.transparent,
                                 child: Image.asset(
-                                    "assets/images/united-kingdom.png"),
+                                    "assets/images/united-kingdom.png",width: 20,),
                               ),
                             );
                           }),
@@ -156,19 +158,21 @@ class _SettingState extends State<Setting> {
                           onPressed: (() {
                             print('arab');
                             BlocProvider.of<LanguageBloc>(context)
-                                .add(ToArabic());
+                                .add(ToArabic(locale: Locale("ar", "")));
                           }),
                           child: BlocBuilder<LanguageBloc, SelectedLangue>(
                               builder: (context, state) {
+                            print(state.locale);
+
                             return ClipRRect(
-                              borderRadius: BorderRadius.circular(50.0),
+                             borderRadius: BorderRadius.circular(5.0),
                               child: Container(
-                                height: 70.0,
-                                width: 70.0,
+                                height: 50.0,
+                                width: 50.0,
                                 color: state.locale == Locale("ar", "")
                                     ? Palette.grey
                                     : Colors.transparent,
-                                child: Image.asset("assets/images/arab.png"),
+                                child: Image.asset("assets/images/arab.png",width: 20,),
                               ),
                             );
                           }),

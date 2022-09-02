@@ -1,6 +1,3 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -14,6 +11,7 @@ import 'package:flutterfirebase/pages/authentication/authentication.signin.dart'
 import 'package:flutterfirebase/pages/config/config.palette.dart';
 import 'package:flutterfirebase/pages/config/config.solvit.logo.dart';
 import 'package:flutterfirebase/pages/config/config.theme.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class ModifierProfil extends StatefulWidget {
   String nom;
@@ -103,7 +101,7 @@ class _ModifierProfilState extends State<ModifierProfil> {
                       child: BlocBuilder<ThemeBloc, ThemeState>(
                         builder: (context, state) {
                           return Text(
-                            "Modifier votre profile",
+                            AppLocalizations.of(context)!.modifier_prof,
                             style: TextStyle(
                                 fontSize: 25,
                                 fontWeight: FontWeight.bold,
@@ -128,7 +126,7 @@ class _ModifierProfilState extends State<ModifierProfil> {
                         .add(UserProfilRequested());
                     ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                       content: Text(
-                        "Profil mis à jour",
+                        AppLocalizations.of(context)!.profil_maj,
                         style: TextStyle(color: Palette.blue),
                       ),
                       backgroundColor: Palette.yellow,
@@ -181,7 +179,7 @@ class _ModifierProfilState extends State<ModifierProfil> {
                       updateUser(_nomcontroller.text, _prenomcontroller.text);
                     },
                     child: Text(
-                      'Modifier votre profile',
+                      AppLocalizations.of(context)!.modifier_prof,
                     ),
                   ),
                 ),

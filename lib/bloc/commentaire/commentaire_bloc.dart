@@ -36,8 +36,7 @@ class CommentaireBloc extends Bloc<CommentaireEvent, CommentaireState> {
             commentaire: event.commentaire,
             problemId: event.problemId,
             userEmail: FirebaseAuth.instance.currentUser!.email.toString(),
-            valide: false,
-            vote: 0);
+            );
         emit(LoadedAddComment());
       } catch (e) {
         emit(ErrorAddComment(errormessage: e.toString()));

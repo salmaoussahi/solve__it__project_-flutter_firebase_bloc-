@@ -1,5 +1,3 @@
-import 'dart:ui';
-
 import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -12,7 +10,6 @@ import 'package:flutterfirebase/pages/authentication/authentication.forgot_passw
 import 'package:flutterfirebase/pages/home.dart';
 import 'package:flutterfirebase/pages/config/config.solvit.logo.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-
 
 class SignIn extends StatefulWidget {
   const SignIn({Key? key}) : super(key: key);
@@ -55,8 +52,10 @@ class _SignInState extends State<SignIn> {
               child: BlocBuilder<AuthBloc, AuthState>(
                 builder: (context, state) {
                   if (state is Loading) {
-                    return  Center(
-                      child: CircularProgressIndicator(color: Palette.yellow,),
+                    return Center(
+                      child: CircularProgressIndicator(
+                        color: Palette.yellow,
+                      ),
                     );
                   }
                   if (state is UnAuthenticated) {
@@ -69,7 +68,7 @@ class _SignInState extends State<SignIn> {
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                 Text(
+                                Text(
                                   AppLocalizations.of(context)!.login_titre,
                                   style: TextStyle(
                                       fontSize: 30,
@@ -88,8 +87,10 @@ class _SignInState extends State<SignIn> {
                                           keyboardType:
                                               TextInputType.emailAddress,
                                           controller: _emailController,
-                                          decoration:  InputDecoration(
-                                            hintText: AppLocalizations.of(context)!.email_hint,
+                                          decoration: InputDecoration(
+                                            hintText:
+                                                AppLocalizations.of(context)!
+                                                    .email_hint,
                                             border: OutlineInputBorder(),
                                           ),
                                           autovalidateMode: AutovalidateMode
@@ -98,8 +99,8 @@ class _SignInState extends State<SignIn> {
                                             return value != null &&
                                                     !EmailValidator.validate(
                                                         value)
-                                                ? AppLocalizations.of(context)!.valid_email
-
+                                                ? AppLocalizations.of(context)!
+                                                    .valid_email
                                                 : null;
                                           },
                                         ),
@@ -108,20 +109,22 @@ class _SignInState extends State<SignIn> {
                                         ),
                                         TextFormField(
                                           cursorColor: Colors.grey,
-                                          obscureText:true,
+                                          obscureText: true,
                                           keyboardType: TextInputType.text,
                                           controller: _passwordController,
                                           decoration: InputDecoration(
-                                              hintText:
-                                                  AppLocalizations.of(context)!.password_hint,
-                                              border: OutlineInputBorder(),
-                                             ),
+                                            hintText:
+                                                AppLocalizations.of(context)!
+                                                    .password_hint,
+                                            border: OutlineInputBorder(),
+                                          ),
                                           autovalidateMode: AutovalidateMode
                                               .onUserInteraction,
                                           validator: (value) {
                                             return value != null &&
                                                     value.length < 6
-                                                ? AppLocalizations.of(context)!.valid_password
+                                                ? AppLocalizations.of(context)!
+                                                    .valid_password
                                                 : null;
                                           },
                                         ),
@@ -134,14 +137,13 @@ class _SignInState extends State<SignIn> {
                                                   .width *
                                               0.7,
                                           child: ElevatedButton(
-                                            
                                             onPressed: () {
                                               _authenticateWithEmailAndPassword(
                                                   context);
                                             },
-                                            child:  Text(
-                                              AppLocalizations.of(context)!.connecter_vous,
-                                             
+                                            child: Text(
+                                              AppLocalizations.of(context)!
+                                                  .connecter_vous,
                                             ),
                                           ),
                                         ),
@@ -154,7 +156,8 @@ class _SignInState extends State<SignIn> {
                                                           ForgotPassword())));
                                             },
                                             child: Text(
-                                              AppLocalizations.of(context)!.forgot_password,
+                                              AppLocalizations.of(context)!
+                                                  .forgot_password,
                                               style: TextStyle(
                                                   color: Palette.yellow),
                                             ))
@@ -174,7 +177,8 @@ class _SignInState extends State<SignIn> {
                                 // ),
                                 Column(
                                   children: [
-                                     Text(AppLocalizations.of(context)!.pas_de_cpt),
+                                    Text(AppLocalizations.of(context)!
+                                        .pas_de_cpt),
                                     MaterialButton(
                                       onPressed: () {
                                         Navigator.pushReplacement(
@@ -184,7 +188,8 @@ class _SignInState extends State<SignIn> {
                                                   const SignUp()),
                                         );
                                       },
-                                      child:  Text(AppLocalizations.of(context)!.creer_cpt),
+                                      child: Text(AppLocalizations.of(context)!
+                                          .creer_cpt),
                                     )
                                   ],
                                 )

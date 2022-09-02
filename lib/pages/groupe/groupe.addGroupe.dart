@@ -8,6 +8,8 @@ import 'package:flutterfirebase/bloc/user/user_event.dart';
 import 'package:flutterfirebase/pages/config/config.palette.dart';
 import 'package:flutterfirebase/pages/config/config.solvit.logo.dart';
 import 'package:flutterfirebase/pages/config/config.theme.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 
 class AddGroupe extends StatefulWidget {
   AddGroupe({Key? key}) : super(key: key);
@@ -88,7 +90,7 @@ class _AddGroupeState extends State<AddGroupe> {
                       child: BlocBuilder<ThemeBloc, ThemeState>(
                         builder: (context, state) {
                           return Text(
-                            "Ajouter un groupe",
+                           AppLocalizations.of(context)!.ajouter_grp,
                             style: TextStyle(
                                 fontSize: 25,
                                 fontWeight: FontWeight.bold,
@@ -109,13 +111,13 @@ class _AddGroupeState extends State<AddGroupe> {
                     child: Column(
                       children: [
                         Padding(
-                          padding: const EdgeInsets.all(8.0),
+                          padding:  EdgeInsets.all(8.0),
                           child: TextFormField(
                             cursorColor: Colors.grey,
                             controller: _libelle,
-                            decoration: const InputDecoration(
+                            decoration:  InputDecoration(
                               fillColor: Colors.grey,
-                              hintText: "Libellé du groupe",
+                              hintText: AppLocalizations.of(context)!.libelle_grp,
                               border: OutlineInputBorder(),
                             ),
                             autovalidateMode:
@@ -130,8 +132,8 @@ class _AddGroupeState extends State<AddGroupe> {
                           child: TextFormField(
                             cursorColor: Colors.grey,
                             controller: _domaine,
-                            decoration: const InputDecoration(
-                              hintText: "Domaine du groupe",
+                            decoration:  InputDecoration(
+                              hintText: AppLocalizations.of(context)!.domaine_grp,
                               border: OutlineInputBorder(),
                             ),
                             autovalidateMode:
@@ -152,14 +154,14 @@ class _AddGroupeState extends State<AddGroupe> {
                       _addGroupe(context);
                       ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                         content: Text(
-                          "Groupe Ajouté avec succes",
+                          AppLocalizations.of(context)!.grp_scaff,
                           style: TextStyle(color: Palette.blue),
                         ),
                         backgroundColor: Palette.yellow,
                       ));
                       Navigator.pop(context);
                     },
-                    child: const Text('Créer le groupe'),
+                    child: Text(AppLocalizations.of(context)!.creer_grp),
                   ),
                 )
               ],

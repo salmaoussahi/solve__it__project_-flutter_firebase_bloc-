@@ -14,14 +14,11 @@ class CommentaireRepository {
     required String commentaire,
     required String problemId,
     required String userEmail,
-    required bool valide,
-    required int vote,
+    
   }) async {
     try {
       await FirebaseFirestore.instance.collection('Commentaire').add({
         "commentaire": commentaire,
-        "valide": valide,
-        "vote": vote,
         "problemId": problemId,
         "userEmail": userEmail
       }).catchError((error) => print("Error: $error"));

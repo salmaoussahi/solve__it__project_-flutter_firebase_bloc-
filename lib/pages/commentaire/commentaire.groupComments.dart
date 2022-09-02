@@ -1,4 +1,3 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -10,6 +9,7 @@ import 'package:flutterfirebase/pages/config/config.palette.dart';
 import 'package:flutterfirebase/pages/config/config.solvit.logo.dart';
 import 'package:flutterfirebase/pages/commentaire/commentaire.addComment.dart';
 import 'package:flutterfirebase/pages/config/config.theme.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class PlusDetail extends StatefulWidget {
   String problemId;
@@ -38,7 +38,6 @@ class _PlusDetailState extends State<PlusDetail> {
 
   @override
   void initState() {
-    print("object");
     _problemComments(context);
   }
 
@@ -80,20 +79,26 @@ class _PlusDetailState extends State<PlusDetail> {
                   padding: const EdgeInsets.only(left: 12.0),
                   child: BlocBuilder<ThemeBloc, ThemeState>(
                     builder: (context, state) {
-                      return Text(
-                        "Détail du problème",
-                        style: TextStyle(
-                            fontSize: 25,
-                            fontWeight: FontWeight.bold,
-                            color: state.themeData == MyTheme.darkTheme
-                                ? Palette.yellow
-                                : Palette.blue),
+                      return Row(
+                        children: [
+                          IconButton(onPressed: () {}, icon: Icon(Icons.link)),
+                          Text(
+                            AppLocalizations.of(context)!.detail,
+                            style: TextStyle(
+                                fontSize: 25,
+                                fontWeight: FontWeight.bold,
+                                color: state.themeData == MyTheme.darkTheme
+                                    ? Palette.yellow
+                                    : Palette.blue),
+                          ),
+                        ],
                       );
                     },
                   ),
                 ),
               ],
             ),
+            // Text("https://solvitdomaine.page.link/start"),
             SizedBox(
               height: 10,
             ),
@@ -103,6 +108,7 @@ class _PlusDetailState extends State<PlusDetail> {
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   ListTile(
+                    
                     trailing: Icon(
                       Icons.check_circle,
                       color: this.widget.isSolved == true
@@ -112,7 +118,8 @@ class _PlusDetailState extends State<PlusDetail> {
                     title: Column(
                       children: [
                         Text(
-                          'Par : ' + this.widget.userEmail,
+                          AppLocalizations.of(context)!.par +" :" +
+                              this.widget.userEmail,
                           style: TextStyle(fontSize: 18),
                         ),
                         BlocBuilder<ThemeBloc, ThemeState>(
@@ -147,7 +154,9 @@ class _PlusDetailState extends State<PlusDetail> {
                                         .update({"isSolved": true});
                                     ScaffoldMessenger.of(context)
                                         .showSnackBar(SnackBar(
-                                      content: Text("Problème résolu"),
+                                      content: Text(
+                                          AppLocalizations.of(context)!
+                                              .problem_resolu),
                                       backgroundColor:
                                           state.themeData == MyTheme.darkTheme
                                               ? Palette.yellow
@@ -157,7 +166,8 @@ class _PlusDetailState extends State<PlusDetail> {
                                   },
                                   color: Palette.yellow,
                                   child: Text(
-                                    "Problem résolu",
+                                    AppLocalizations.of(context)!
+                                        .problem_resolu,
                                     style: TextStyle(color: Palette.blue),
                                   ),
                                 );
@@ -179,7 +189,7 @@ class _PlusDetailState extends State<PlusDetail> {
                           },
                           color: Palette.blue,
                           child: Text(
-                            "Commenter",
+                            AppLocalizations.of(context)!.commenter,
                             style: TextStyle(color: Colors.white),
                           ),
                         ),
@@ -192,10 +202,13 @@ class _PlusDetailState extends State<PlusDetail> {
             Expanded(child: BlocBuilder<CommentaireBloc, CommentaireState>(
               builder: (context, state) {
                 if (state is LodingProblemComments) {
-                  return CircularProgressIndicator(color: Palette.yellow,);
+                  return CircularProgressIndicator(
+                    color: Palette.yellow,
+                  );
                 }
                 if (state is ErrorProblemComments) {
-                  return Text("erreur : " + state.errormessage);
+                  return Text(
+                      AppLocalizations.of(context)!.error + state.errormessage);
                 }
                 if (state is LoadedProblemComments) {
                   return StreamBuilder<QuerySnapshot>(
@@ -203,7 +216,7 @@ class _PlusDetailState extends State<PlusDetail> {
                     builder: (BuildContext context,
                         AsyncSnapshot<QuerySnapshot> snapshot) {
                       if (snapshot.hasError) {
-                        return Text('error');
+                        return Text(AppLocalizations.of(context)!.error);
                       }
                       if (snapshot.connectionState == ConnectionState.waiting) {
                         return Container();
@@ -217,21 +230,17 @@ class _PlusDetailState extends State<PlusDetail> {
                             return ListTile(
                               title: Text("${data.docs[index]['userEmail']}"),
                               subtitle: TextButton(
-                                child:
-                                    Text("${data.docs[index]['commentaire']}",style: TextStyle(color: Palette.grey),),
+                                child: Text(
+                                  "${data.docs[index]['commentaire']}",
+                                  style: TextStyle(color: Palette.grey),
+                                ),
                                 onPressed: () {
                                   setState(() {
                                     data.docs[index]['valide'] == true;
                                   });
                                 },
                               ),
-                              trailing: IconButton(
-                                icon: Icon(
-                                  Icons.star,
-                                  color: Palette.grey,
-                                ),
-                                onPressed: () {},
-                              ),
+                              
                             );
                           });
                     },

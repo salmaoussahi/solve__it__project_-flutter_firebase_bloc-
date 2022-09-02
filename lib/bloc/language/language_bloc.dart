@@ -8,14 +8,19 @@ part 'language_state.dart';
 class LanguageBloc extends Bloc<LanguageEvent, SelectedLangue> {
   LanguageBloc() : super(SelectedLangue(locale: Locale("fr", ""))) {
     on<ToArabic>((event, emit) {
-      emit(SelectedLangue(locale: Locale("ar")));
+      print("boloc arb");
+      emit(SelectedLangue(locale: event.locale));
+      print("boloc arb emmited");
     });
     on<ToEnglish>((event, emit) {
-      print("dd");
-      emit(SelectedLangue(locale: Locale("en")));
+      print("boloc eng");
+      emit(SelectedLangue(locale: event.locale));
+      print("boloc eng emmited");
     });
-    on<ToFrensh>((event, emit) {
-      emit(SelectedLangue(locale: Locale("fr")));
+    on<ToFrench>((event, emit) {
+      print("boloc fr");
+      emit(SelectedLangue(locale: event.locale));
+      print("boloc fr emmited");
     });
   }
 }

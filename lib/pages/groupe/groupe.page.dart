@@ -10,6 +10,8 @@ import 'package:flutterfirebase/pages/config/config.theme.dart';
 import 'package:flutterfirebase/pages/groupe/groupe.addGroupe.dart';
 import 'package:flutterfirebase/pages/groupe/groupe.otherGroupe.dart';
 import 'package:flutterfirebase/pages/groupe/groupe.userGroupe.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 
 class Groupe extends StatefulWidget {
   Groupe({Key? key}) : super(key: key);
@@ -44,8 +46,8 @@ class _GroupeState extends State<Groupe> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  const Text(
-                    'Ajouter un groupe',
+                   Text(
+                   AppLocalizations.of(context)!.ajouter_grp,
                   ),
                   Icon(
                     Icons.add,
@@ -65,7 +67,7 @@ class _GroupeState extends State<Groupe> {
                   child: BlocBuilder<ThemeBloc, ThemeState>(
                     builder: (context, state) {
                       return Text(
-                        "Mes groupes",
+                        AppLocalizations.of(context)!.mes_grp,
                         style: TextStyle(
                             fontSize: 25,
                             fontWeight: FontWeight.bold,
@@ -87,10 +89,10 @@ class _GroupeState extends State<Groupe> {
           ),
           ListTile(
             title: Text(
-              "Admin",
+              AppLocalizations.of(context)!.admin,
             ),
             subtitle: Text(
-              "Les groupes que j\'ai crée",
+              AppLocalizations.of(context)!.admin_subtitle,
               style: TextStyle(color: Palette.grey),
             ),
             onTap: () {
@@ -104,10 +106,10 @@ class _GroupeState extends State<Groupe> {
           ),
           ListTile(
             title: Text(
-              "Membre",
+              AppLocalizations.of(context)!.membre,
             ),
             subtitle: Text(
-              "Les groupes dont je suis membre",
+              AppLocalizations.of(context)!.membre_subtitle,
               style: TextStyle(color: Palette.grey),
             ),
             onTap: () {

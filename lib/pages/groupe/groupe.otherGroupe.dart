@@ -2,7 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutterfirebase/bloc/groupe/goupe_bloc.dart';
 import 'package:flutterfirebase/bloc/theme/theme_bloc.dart';
 import 'package:flutterfirebase/bloc/theme/theme_state.dart';
@@ -69,10 +69,13 @@ class _OtherGroupState extends State<OtherGroup> {
             Expanded(child:
                 BlocBuilder<GoupeBloc, GoupeState>(builder: ((context, state) {
               if (state is LodingUserOtherGroupe) {
-                return Text("Loading");
+                return CircularProgressIndicator(
+                  color: Palette.yellow,
+                );
               }
               if (state is ErrorUserOtherGroupe) {
-                return Text("erreur : " + state.errormessage);
+                return Text(
+                    AppLocalizations.of(context)!.error + state.errormessage);
               }
               if (state is LoadedUserOtherGroupe) {
                 return StreamBuilder<QuerySnapshot>(
@@ -80,7 +83,7 @@ class _OtherGroupState extends State<OtherGroup> {
                   builder: (BuildContext context,
                       AsyncSnapshot<QuerySnapshot> snapshot) {
                     if (snapshot.hasError) {
-                      return Text('error');
+                      return Text(AppLocalizations.of(context)!.error);
                     }
 
                     if (snapshot.connectionState == ConnectionState.waiting) {
@@ -109,10 +112,6 @@ class _OtherGroupState extends State<OtherGroup> {
                                   style: TextStyle(color: Palette.grey)),
                               trailing: IconButton(
                                 onPressed: () {
-                                  data.docs[index]['userId'] ==
-                                          FirebaseAuth.instance.currentUser!.uid
-                                      ? print("admin")
-                                      : print(("non admin"));
                                   Navigator.push(
                                       context,
                                       MaterialPageRoute(

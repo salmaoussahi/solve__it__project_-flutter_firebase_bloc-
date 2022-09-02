@@ -1,5 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -79,7 +79,7 @@ class _UserGroupeState extends State<UserGroupe> {
                   );
                 }
                 if (state is ErrorUserGroupe) {
-                  return Text("erreur : " + state.errormessage);
+                  return Text(AppLocalizations.of(context)!.error + state.errormessage);
                 }
                 if (state is LoadedUserGroupe) {
                   return StreamBuilder<QuerySnapshot>(
@@ -87,7 +87,7 @@ class _UserGroupeState extends State<UserGroupe> {
                       builder: (BuildContext context,
                           AsyncSnapshot<QuerySnapshot> snapshot) {
                         if (snapshot.hasError) {
-                          return Text('Une erreure a été survenue');
+                          return Text(AppLocalizations.of(context)!.error);
                         }
 
                         if (snapshot.connectionState ==
@@ -102,9 +102,9 @@ class _UserGroupeState extends State<UserGroupe> {
                         return data.size == 0
                             ? Column(
                                 children: [
-                                  SvgPicture.asset("assets/omages/nodata.svg"),
+                                  SvgPicture.asset("assets/images/nodata.svg"),
                                   Text(
-                                    "Vous n'avez pas de groupe",
+                                    AppLocalizations.of(context)!.pas_de_grp,
                                     style: TextStyle(color: Palette.yellow),
                                   ),
                                 ],
@@ -130,15 +130,15 @@ class _UserGroupeState extends State<UserGroupe> {
                                         Expanded(
                                             child: Text(
                                                 '${data.docs[index]['libelle']}')),
-                                        data.docs[index]['userId'] ==
-                                                FirebaseAuth
-                                                    .instance.currentUser!.uid
-                                            ? Text(
-                                                "Admin",
-                                                style: TextStyle(
-                                                    color: Palette.yellow),
-                                              )
-                                            : Text('Non Admin'),
+                                        // data.docs[index]['userId'] ==
+                                        //         FirebaseAuth
+                                        //             .instance.currentUser!.uid
+                                        //     ? Text(
+                                        //         "Admin",
+                                        //         style: TextStyle(
+                                        //             color: Palette.yellow),
+                                        //       )
+                                        //     : Text('Non Admin'),
                                       ],
                                     ),
                                     subtitle: Text(

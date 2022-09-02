@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutterfirebase/bloc/commentaire/commentaire_bloc.dart';
 import 'package:flutterfirebase/pages/config/config.palette.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 
 class Commenter extends StatelessWidget {
   String problemId;
@@ -24,7 +26,7 @@ class Commenter extends StatelessWidget {
           return  Center(child: CircularProgressIndicator(color: Palette.yellow,));
         }
         return AlertDialog(
-          title: Text('Ajouter un commentaire'),
+          title: Text(AppLocalizations.of(context)!.comments_titre),
           content: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
@@ -33,7 +35,7 @@ class Commenter extends StatelessWidget {
                 controller: _commentaire,
                 keyboardType: TextInputType.text,
                 decoration: InputDecoration(
-                  hintText: "Entrer votre Commentaire ici",
+                  hintText:AppLocalizations.of(context)!.entrer_comm,
                   border: OutlineInputBorder(),
                 ),
               ),
@@ -42,12 +44,12 @@ class Commenter extends StatelessWidget {
           actions: <Widget>[
             TextButton(
               onPressed: () => Navigator.pop(context, 'Annuler'),
-              child: Text('Cancel',style: TextStyle(color: Colors.grey),),
+              child: Text(AppLocalizations.of(context)!.annuler,style: TextStyle(color: Colors.grey),),
             ),
             TextButton(
               onPressed: () => {_addComment(context), print(_commentaire.text)},
               child: Text(
-                'Ajouter',
+                AppLocalizations.of(context)!.ajouter,
                 style: TextStyle(color: Palette.yellow),
               ),
             ),

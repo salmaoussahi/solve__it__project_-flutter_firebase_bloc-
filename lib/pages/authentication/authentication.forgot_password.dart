@@ -1,7 +1,7 @@
 import 'package:email_validator/email_validator.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutterfirebase/pages/config/config.palette.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutterfirebase/pages/config/config.solvit.logo.dart';
 
 class ForgotPassword extends StatelessWidget {
@@ -27,7 +27,7 @@ class ForgotPassword extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Text(
-                  "Modifier le mot de passe",
+                  AppLocalizations.of(context)!.modifier_mdp,
                   style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
                 ),
               ],
@@ -50,8 +50,8 @@ class ForgotPassword extends StatelessWidget {
                               cursorColor: Colors.grey,
                               keyboardType: TextInputType.emailAddress,
                               controller: _email,
-                              decoration: const InputDecoration(
-                                hintText: "Entrer votre email",
+                              decoration:  InputDecoration(
+                                hintText: AppLocalizations.of(context)!.email_hint,
                                 border: OutlineInputBorder(),
                               ),
                               autovalidateMode:
@@ -59,7 +59,7 @@ class ForgotPassword extends StatelessWidget {
                               validator: (value) {
                                 return value != null &&
                                         !EmailValidator.validate(value)
-                                    ? 'Enter a valid email'
+                                    ? AppLocalizations.of(context)!.valid_email
                                     : null;
                               },
                             ),
@@ -79,13 +79,13 @@ class ForgotPassword extends StatelessWidget {
                                     ScaffoldMessenger.of(context).showSnackBar(
                                         SnackBar(
                                             content: Text(
-                                                'Un email a été envoyé pour modifier votre mot de passe vueillez vérifier')));
+                                                AppLocalizations.of(context)!.envoyer_dem_sub)));
                                   } catch (e) {
                                     print(e.toString());
                                   }
                                 },
-                                child: const Text(
-                                  'Envoyer demande',
+                                child:  Text(
+                                  AppLocalizations.of(context)!.envoyer_dem,
                                 ),
                               ),
                             )

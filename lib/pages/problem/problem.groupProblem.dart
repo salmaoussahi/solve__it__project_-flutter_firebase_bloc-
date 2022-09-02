@@ -1,4 +1,4 @@
-import 'dart:ui';
+
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -16,6 +16,8 @@ import 'package:flutterfirebase/pages/problem/problem.addProblem.dart';
 import 'package:flutterfirebase/pages/config/config.palette.dart';
 import 'package:flutterfirebase/pages/commentaire/commentaire.groupComments.dart';
 import 'package:flutterfirebase/pages/config/config.solvit.logo.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 
 class GroupeProblem extends StatefulWidget {
   final String userId;
@@ -108,7 +110,7 @@ class _GroupeProblemState extends State<GroupeProblem> {
                     color: Palette.yellow,
                   ),
                   title: Text(
-                    'Information du groupe',
+                    AppLocalizations.of(context)!.info_grp,
                     style: TextStyle(fontWeight: FontWeight.bold),
                   ),
                   subtitle: Text(
@@ -149,7 +151,7 @@ class _GroupeProblemState extends State<GroupeProblem> {
                           },
                           title: ListTile(
                             title: Text(
-                              "Membres du groupe",
+                              AppLocalizations.of(context)!.membre_grp,
                               style: TextStyle(color: Palette.grey),
                             ),
                           ),
@@ -182,7 +184,7 @@ class _GroupeProblemState extends State<GroupeProblem> {
                                       });
                                 }
                                 return Container(
-                                  child: Text("data"),
+                                  child: Text(""),
                                 );
                               },
                             ),
@@ -201,8 +203,8 @@ class _GroupeProblemState extends State<GroupeProblem> {
                                               groupeId:
                                                   this.widget.groupeId))));
                                 },
-                                child: const Text(
-                                  'Ajouter un membre',
+                                child:  Text(
+                                  AppLocalizations.of(context)!.add_mem_titre,
                                   style: TextStyle(color: Colors.white),
                                 ),
                               ),
@@ -227,7 +229,7 @@ class _GroupeProblemState extends State<GroupeProblem> {
               );
             }
             if (state is ErrorGroupProblems) {
-              return Text("erreur : " + state.errormessage);
+              return Text(AppLocalizations.of(context)!.error + state.errormessage);
             }
             if (state is LoadedGroupProblems) {
               return StreamBuilder<QuerySnapshot>(
@@ -235,7 +237,7 @@ class _GroupeProblemState extends State<GroupeProblem> {
                 builder: (BuildContext context,
                     AsyncSnapshot<QuerySnapshot> snapshot) {
                   if (snapshot.hasError) {
-                    return Text('error');
+                    return Text(AppLocalizations.of(context)!.error);
                   }
                   if (snapshot.connectionState == ConnectionState.waiting) {
                     return Center(
@@ -252,7 +254,7 @@ class _GroupeProblemState extends State<GroupeProblem> {
                               "assets/images/nodata.svg",
                               width: MediaQuery.of(context).size.width * 0.5,
                             ),
-                            Text("Ce groupe ne contient aucun problème !")
+                            Text(AppLocalizations.of(context)!.grp_pas_de_prob)
                           ],
                         )
                       : ListView.builder(
@@ -356,7 +358,7 @@ class _GroupeProblemState extends State<GroupeProblem> {
                                                                 ['userEmail'],
                                                       )));
                                         },
-                                        child: Text("Voir les commentaires"),
+                                        child: Text(AppLocalizations.of(context)!.voir_commts),
                                       )
                                     ],
                                   ),

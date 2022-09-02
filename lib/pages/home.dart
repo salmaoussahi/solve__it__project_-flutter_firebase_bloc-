@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutterfirebase/bloc/language/language_bloc.dart';
 import 'package:flutterfirebase/bloc/theme/theme_bloc.dart';
 import 'package:flutterfirebase/bloc/theme/theme_event.dart';
 import 'package:flutterfirebase/bloc/theme/theme_state.dart';
@@ -31,43 +32,87 @@ class _HomePageState extends State<HomePage> {
         backgroundColor: Colors.transparent,
         automaticallyImplyLeading: false,
         elevation: 0,
-        title: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            SlovitLogo(),
-            Row(mainAxisSize: MainAxisSize.min, children: [
-              //Dark Theme Button
-              IconButton(onPressed: () {
-                BlocProvider.of<ThemeBloc>(context)
-                    .add(ThemeEvent(theme: MyTheme.darkTheme));
-              }, icon: BlocBuilder<ThemeBloc, ThemeState>(
-                builder: (context, state) {
-                  return Icon(
-                    Icons.dark_mode,
-                    color: state.themeData == MyTheme.darkTheme
-                        ? Palette.yellow
-                        : Palette.grey,
-                  );
-                },
-              )),
+        title: BlocBuilder<LanguageBloc, SelectedLangue>(
+          builder: (context, languestate) {
+            return languestate.locale == Locale("ar", "") 
+                ? Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      
+                      Row(mainAxisSize: MainAxisSize.min, children: [
+                        //Dark Theme Button
+                        IconButton(onPressed: () {
+                          BlocProvider.of<ThemeBloc>(context)
+                              .add(ThemeEvent(theme: MyTheme.darkTheme));
+                        }, icon: BlocBuilder<ThemeBloc, ThemeState>(
+                          builder: (context, state) {
+                            return Icon(
+                              Icons.dark_mode,
+                              color: state.themeData == MyTheme.darkTheme
+                                  ? Palette.yellow
+                                  : Palette.grey,
+                            );
+                          },
+                        )),
 
-              //Light Theme Button
+                        //Light Theme Button
 
-              IconButton(onPressed: () {
-                BlocProvider.of<ThemeBloc>(context)
-                    .add(ThemeEvent(theme: MyTheme.lightTheme));
-              }, icon: BlocBuilder<ThemeBloc, ThemeState>(
-                builder: (context, state) {
-                  return Icon(
-                    Icons.light_mode,
-                    color: state.themeData == MyTheme.lightTheme
-                        ? Palette.yellow
-                        : Palette.grey,
+                        IconButton(onPressed: () {
+                          BlocProvider.of<ThemeBloc>(context)
+                              .add(ThemeEvent(theme: MyTheme.lightTheme));
+                        }, icon: BlocBuilder<ThemeBloc, ThemeState>(
+                          builder: (context, state) {
+                            return Icon(
+                              Icons.light_mode,
+                              color: state.themeData == MyTheme.lightTheme
+                                  ? Palette.yellow
+                                  : Palette.grey,
+                            );
+                          },
+                        )),
+                      ]),
+                      SlovitLogo(),
+                    ],
+                  )
+                : Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      SlovitLogo(),
+                      Row(mainAxisSize: MainAxisSize.min, children: [
+                        //Dark Theme Button
+                        IconButton(onPressed: () {
+                          BlocProvider.of<ThemeBloc>(context)
+                              .add(ThemeEvent(theme: MyTheme.darkTheme));
+                        }, icon: BlocBuilder<ThemeBloc, ThemeState>(
+                          builder: (context, state) {
+                            return Icon(
+                              Icons.dark_mode,
+                              color: state.themeData == MyTheme.darkTheme
+                                  ? Palette.yellow
+                                  : Palette.grey,
+                            );
+                          },
+                        )),
+
+                        //Light Theme Button
+
+                        IconButton(onPressed: () {
+                          BlocProvider.of<ThemeBloc>(context)
+                              .add(ThemeEvent(theme: MyTheme.lightTheme));
+                        }, icon: BlocBuilder<ThemeBloc, ThemeState>(
+                          builder: (context, state) {
+                            return Icon(
+                              Icons.light_mode,
+                              color: state.themeData == MyTheme.lightTheme
+                                  ? Palette.yellow
+                                  : Palette.grey,
+                            );
+                          },
+                        )),
+                      ]),
+                    ],
                   );
-                },
-              )),
-            ]),
-          ],
+          },
         ),
       ),
       body: PageStorage(

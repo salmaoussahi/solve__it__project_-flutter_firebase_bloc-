@@ -7,6 +7,8 @@ import 'package:flutterfirebase/bloc/theme/theme_state.dart';
 import 'package:flutterfirebase/pages/config/config.palette.dart';
 import 'package:flutterfirebase/pages/config/config.solvit.logo.dart';
 import 'package:flutterfirebase/pages/config/config.theme.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 
 import '../../bloc/problem/problem_bloc.dart';
 
@@ -50,10 +52,10 @@ class _AddMembreState extends State<AddMembre> {
       });
       print(_userMap);
     }).catchError((e) {
-      print("errur" + e.toString());
+      print(AppLocalizations.of(context)!.error+ e.toString());
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(
         content: Text(
-          "Utilisateur non trouvé",
+          AppLocalizations.of(context)!.user_nf,
           style: TextStyle(color: Palette.blue),
         ),
         backgroundColor: Palette.yellow,
@@ -99,7 +101,7 @@ class _AddMembreState extends State<AddMembre> {
                   child: BlocBuilder<ThemeBloc, ThemeState>(
                     builder: (context, state) {
                       return Text(
-                        "Ajouter un membre au groupe:",
+                        AppLocalizations.of(context)!.add_mem_titre,
                         style: TextStyle(
                             fontSize: 25,
                             fontWeight: FontWeight.bold,
@@ -126,7 +128,7 @@ class _AddMembreState extends State<AddMembre> {
                 keyboardType: TextInputType.text,
                 controller: _email,
                 decoration: InputDecoration(
-                    hintText: "Entrer l'email du membre",
+                    hintText: AppLocalizations.of(context)!.email_membre,
                     border: OutlineInputBorder(),
                     suffixIcon: IconButton(
                         icon: Icon(
@@ -163,11 +165,11 @@ class _AddMembreState extends State<AddMembre> {
                         })),
                   ),
             Text(
-              "Vous avez ajouter : ",
+              AppLocalizations.of(context)!.vous_avez_ajute,
               style: TextStyle(color: Palette.yellow, fontSize: 22),
             ),
             membres.length == 0
-                ? Text("personne")
+                ? Text(AppLocalizations.of(context)!.personne)
                 : Expanded(
                     child: ListView.builder(
                         itemCount: membres.length,
@@ -203,8 +205,8 @@ class _AddMembreState extends State<AddMembre> {
                     onPressed: () {
                       _addMembers(context);
                     },
-                    child: const Text(
-                      'Confirmer',
+                    child:  Text(
+                      AppLocalizations.of(context)!.confirmer,
                     ),
                   ),
                 );
@@ -214,7 +216,7 @@ class _AddMembreState extends State<AddMembre> {
                 if (state is LoadedAddMembres) {
                   ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                     content: Text(
-                      "Membre Ajouté avec succes",
+                      AppLocalizations.of(context)!.membre_scaff,
                       style: TextStyle(color: Palette.blue),
                     ),
                     backgroundColor: Palette.yellow,

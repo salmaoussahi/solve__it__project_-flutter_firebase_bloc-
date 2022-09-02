@@ -5,6 +5,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutterfirebase/bloc/problem/problem_bloc.dart';
 import 'package:flutterfirebase/pages/config/config.palette.dart';
 import 'package:flutterfirebase/pages/config/config.solvit.logo.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 
 class AddProblem extends StatefulWidget {
   String groupeId;
@@ -59,7 +61,7 @@ class _AddProblemState extends State<AddProblem> {
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     Text(
-                      "Ajouter un problème dans le groupe : ",
+                      AppLocalizations.of(context)!.add_mem_titre,
                       style:
                           TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                     ),
@@ -86,8 +88,8 @@ class _AddProblemState extends State<AddProblem> {
                           cursorColor: Colors.grey,
                           controller: _intitule,
                           keyboardType: TextInputType.emailAddress,
-                          decoration: const InputDecoration(
-                            hintText: "Intitulé de votre problème",
+                          decoration:  InputDecoration(
+                            hintText: AppLocalizations.of(context)!.intitule_prob,
                             border: OutlineInputBorder(),
                           ),
                         ),
@@ -99,8 +101,8 @@ class _AddProblemState extends State<AddProblem> {
                           controller: _description,
                           keyboardType: TextInputType.multiline,
                           maxLines: null,
-                          decoration: const InputDecoration(
-                            hintText: "Entrer un description du problème",
+                          decoration:  InputDecoration(
+                            hintText: AppLocalizations.of(context)!.desc_prob,
                             border: OutlineInputBorder(),
                           ),
                         ),
@@ -115,8 +117,8 @@ class _AddProblemState extends State<AddProblem> {
                               _addProblem(context);
                               Navigator.pop(context);
                             },
-                            child: const Text(
-                              'Ajouter',
+                            child:  Text(
+                              AppLocalizations.of(context)!.ajouter,
                             ),
                           ),
                         ),
@@ -131,7 +133,7 @@ class _AddProblemState extends State<AddProblem> {
                       .add(GroupProblemsRequested(problemId: widget.groupeId));
                   ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                     content: Text(
-                      "Problème Ajouté avec succes",
+                      AppLocalizations.of(context)!.problem_scaff,
                       style: TextStyle(color: Palette.blue),
                     ),
                     backgroundColor: Palette.yellow,

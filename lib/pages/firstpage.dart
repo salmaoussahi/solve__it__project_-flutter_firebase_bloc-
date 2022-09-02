@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
@@ -5,6 +7,7 @@ import 'package:flutterfirebase/bloc/language/language_bloc.dart';
 import 'package:flutterfirebase/pages/authentication/authentication.signin.dart';
 import 'package:flutterfirebase/pages/config/config.solvit.logo.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:intl/locale.dart';
 
 import 'config/config.palette.dart';
 
@@ -21,68 +24,67 @@ class _FirstPageState extends State<FirstPage> {
     return Scaffold(
       appBar:
           AppBar(backgroundColor: Colors.transparent, elevation: 0, actions: [
-        TextButton(onPressed: (() {
-                          print('franc');
-                          BlocProvider.of<LanguageBloc>(context)
-                              .add(ToFrensh());
-                        }), child: BlocBuilder<LanguageBloc, SelectedLangue>(
-                          builder: (context, state) {
-                            return ClipRRect(
-                              borderRadius: BorderRadius.circular(50.0),
-                              child: Container(
-                                height: 70.0,
-                                width: 70.0,
-                                color: state.locale == Locale("fr", "")
-                                    ? Palette.grey
-                                    : Colors.transparent,
-                                child: Image.asset("assets/images/france.png"),
-                              ),
-                            );
-                          },
-                        )),
-                        TextButton(
-                          onPressed: (() {
-                            print('eng');
-                            BlocProvider.of<LanguageBloc>(context)
-                                .add(ToEnglish());
-                          }),
-                          child: BlocBuilder<LanguageBloc, SelectedLangue>(
-                              builder: (context, state) {
-                            return ClipRRect(
-                              borderRadius: BorderRadius.circular(50.0),
-                              child: Container(
-                                height: 70.0,
-                                width: 70.0,
-                                color: state.locale == Locale("en", "")
-                                    ? Palette.grey
-                                    : Colors.transparent,
-                                child: Image.asset(
-                                    "assets/images/united-kingdom.png"),
-                              ),
-                            );
-                          }),
-                        ),
-                        TextButton(
-                          onPressed: (() {
-                            print('arab');
-                            BlocProvider.of<LanguageBloc>(context)
-                                .add(ToArabic());
-                          }),
-                          child: BlocBuilder<LanguageBloc, SelectedLangue>(
-                              builder: (context, state) {
-                            return ClipRRect(
-                              borderRadius: BorderRadius.circular(50.0),
-                              child: Container(
-                                height: 70.0,
-                                width: 70.0,
-                                color: state.locale == Locale("ar", "")
-                                    ? Palette.grey
-                                    : Colors.transparent,
-                                child: Image.asset("assets/images/arab.png"),
-                              ),
-                            );
-                          }),
-                        )
+        // TextButton(onPressed: (() {
+        //   print('franc');
+        //   BlocProvider.of<LanguageBloc>(context)
+        //       .add(ToFrench(locale: Locale("fr", "")));
+        // }), child: BlocBuilder<LanguageBloc, SelectedLangue>(
+        //   builder: (context, state) {
+        //     return ClipRRect(
+        //       borderRadius: BorderRadius.circular(50.0),
+        //       child: Container(
+        //         height: 70.0,
+        //         width: 70.0,
+        //         color: state.locale == Locale("fr", "")
+        //             ? Palette.grey
+        //             : Colors.transparent,
+        //         child: Image.asset("assets/images/france.png"),
+        //       ),
+        //     );
+        //   },
+        // )),
+        // TextButton(
+        //   onPressed: (() {
+        //     print('eng');
+        //     BlocProvider.of<LanguageBloc>(context)
+        //         .add(ToEnglish(locale: Locale("en", "")));
+        //   }),
+        //   child: BlocBuilder<LanguageBloc, SelectedLangue>(
+        //       builder: (context, state) {
+        //     return ClipRRect(
+        //       borderRadius: BorderRadius.circular(50.0),
+        //       child: Container(
+        //         height: 70.0,
+        //         width: 70.0,
+        //         color: state.locale == Locale("en", "")
+        //             ? Palette.grey
+        //             : Colors.transparent,
+        //         child: Image.asset("assets/images/united-kingdom.png"),
+        //       ),
+        //     );
+        //   }),
+        // ),
+        // TextButton(
+        //   onPressed: (() {
+        //     print('arab');
+        //     BlocProvider.of<LanguageBloc>(context)
+        //         .add(ToArabic(locale: Locale("ar", "")));
+        //   }),
+        //   child: BlocBuilder<LanguageBloc, SelectedLangue>(
+        //       builder: (context, state) {
+        //     return ClipRRect(
+        //       borderRadius: BorderRadius.circular(50.0),
+        //       child: Container(
+        //         height: 70.0,
+        //         width: 70.0,
+        //         color: state.locale == Locale("ar", "")
+        //             ? Palette.grey
+        //             : Colors.transparent,
+        //         child: Image.asset("assets/images/arab.png"),
+        //       ),
+        //     );
+        //   }),
+        // )
       ]),
       body: SafeArea(
         child: Column(
@@ -109,6 +111,7 @@ class _FirstPageState extends State<FirstPage> {
             Column(
               children: [
                 MaterialButton(
+                  color: Palette.blue,
                   onPressed: () {
                     Navigator.push(context,
                         MaterialPageRoute(builder: (context) => SignIn()));
@@ -116,8 +119,9 @@ class _FirstPageState extends State<FirstPage> {
                   minWidth: MediaQuery.of(context).size.width * 0.9,
                   child: Text(
                     AppLocalizations.of(context)!.connecter_vous,
+                    style: TextStyle(color: Colors.white),
                   ),
-                )
+                ),
               ],
             )
           ],

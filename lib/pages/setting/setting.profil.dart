@@ -3,6 +3,7 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutterfirebase/bloc/language/language_bloc.dart';
 import 'package:flutterfirebase/bloc/theme/theme_bloc.dart';
 import 'package:flutterfirebase/bloc/theme/theme_state.dart';
 import 'package:flutterfirebase/bloc/user/user_bloc.dart';
@@ -42,24 +43,48 @@ class _ProfilState extends State<Profil> {
         ),
         backgroundColor: Colors.transparent,
         elevation: 0,
-        title: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            SlovitLogo(),
-            BlocBuilder<ThemeBloc, ThemeState>(
-              builder: (context, state) {
-                return IconButton(
-                    onPressed: () {
-                      BlocProvider.of<AuthBloc>(context)
-                          .add(UserProfilRequested());
-                    },
-                    icon: Icon(Icons.refresh,
-                        color: state.themeData == MyTheme.darkTheme
-                            ? Palette.yellow
-                            : Palette.blue));
-              },
-            ),
-          ],
+        title: BlocBuilder<LanguageBloc, SelectedLangue>(
+          builder: (context, languestate) {
+            return languestate.locale == Locale("ar", "")
+                ? Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      BlocBuilder<ThemeBloc, ThemeState>(
+                        builder: (context, state) {
+                          return IconButton(
+                              onPressed: () {
+                                BlocProvider.of<AuthBloc>(context)
+                                    .add(UserProfilRequested());
+                              },
+                              icon: Icon(Icons.refresh,
+                                  color: state.themeData == MyTheme.darkTheme
+                                      ? Palette.yellow
+                                      : Palette.blue));
+                        },
+                      ),
+                      SlovitLogo(),
+                    ],
+                  )
+                : Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      SlovitLogo(),
+                      BlocBuilder<ThemeBloc, ThemeState>(
+                        builder: (context, state) {
+                          return IconButton(
+                              onPressed: () {
+                                BlocProvider.of<AuthBloc>(context)
+                                    .add(UserProfilRequested());
+                              },
+                              icon: Icon(Icons.refresh,
+                                  color: state.themeData == MyTheme.darkTheme
+                                      ? Palette.yellow
+                                      : Palette.blue));
+                        },
+                      ),
+                    ],
+                  );
+          },
         ),
       ),
       body: SafeArea(
@@ -136,9 +161,10 @@ class _ProfilState extends State<Profil> {
                                       fit: BoxFit.fill,
                                       child: Row(
                                         children: [
-                                          
                                           Text(
-                                            AppLocalizations.of(context)!.email+" :",
+                                            AppLocalizations.of(context)!
+                                                    .email +
+                                                " :",
                                             textAlign: TextAlign.center,
                                           ),
                                           Text(
@@ -157,7 +183,8 @@ class _ProfilState extends State<Profil> {
                                     title: Row(
                                       children: [
                                         Text(
-                                          AppLocalizations.of(context)!.nom+" :",
+                                          AppLocalizations.of(context)!.nom +
+                                              " :",
                                           textAlign: TextAlign.center,
                                         ),
                                         Text(
@@ -175,7 +202,8 @@ class _ProfilState extends State<Profil> {
                                     title: Row(
                                       children: [
                                         Text(
-                                          AppLocalizations.of(context)!.prenom+" :",
+                                          AppLocalizations.of(context)!.prenom +
+                                              " :",
                                           textAlign: TextAlign.center,
                                         ),
                                         Text(
@@ -200,10 +228,15 @@ class _ProfilState extends State<Profil> {
                                               context,
                                               MaterialPageRoute(
                                                   builder: ((context) =>
-                                                      ModifierProfil(nom: data['last_name'],prenom:data['first_name']))));
+                                                      ModifierProfil(
+                                                          nom:
+                                                              data['last_name'],
+                                                          prenom: data[
+                                                              'first_name']))));
                                         },
-                                        child:  Text(
-                                          AppLocalizations.of(context)!.modifier_prof,
+                                        child: Text(
+                                          AppLocalizations.of(context)!
+                                              .modifier_prof,
                                         ),
                                       ),
                                     ),
@@ -216,7 +249,7 @@ class _ProfilState extends State<Profil> {
                           },
                         );
                       }
-                    
+
                       return Text("cfcfcfcc");
                     },
                   ),

@@ -1,4 +1,3 @@
-
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -78,16 +77,11 @@ class _MyAppState extends State<MyApp> {
               builder: (context, state) {
                 return BlocBuilder<LanguageBloc, SelectedLangue>(
                   builder: (context, languestate) {
-                    
                     print(languestate.locale);
                     return MaterialApp(
                       localizationsDelegates:
                           AppLocalizations.localizationsDelegates,
                       supportedLocales: AppLocalizations.supportedLocales,
-                      localeListResolutionCallback:
-                          (locales, supportedLocales) {
-                        return languestate.locale;
-                      },
                       locale: languestate.locale,
                       title: 'Solve it',
                       debugShowCheckedModeBanner: false,

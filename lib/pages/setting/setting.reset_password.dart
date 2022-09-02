@@ -2,11 +2,13 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:flutterfirebase/bloc/language/language_bloc.dart';
 import 'package:flutterfirebase/bloc/theme/theme_bloc.dart';
 import 'package:flutterfirebase/bloc/theme/theme_state.dart';
 import 'package:flutterfirebase/pages/config/config.palette.dart';
 import 'package:flutterfirebase/pages/config/config.solvit.logo.dart';
 import 'package:flutterfirebase/pages/config/config.theme.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class ResetPassword extends StatelessWidget {
   final user = FirebaseAuth.instance.currentUser!;
@@ -29,11 +31,17 @@ class ResetPassword extends StatelessWidget {
           ),
           backgroundColor: Colors.transparent,
           elevation: 0,
-          title: Row(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              SlovitLogo(),
-            ],
+          title: BlocBuilder<LanguageBloc, SelectedLangue>(
+            builder: (context, languestate) {
+              return Row(
+                mainAxisAlignment: languestate.locale == Locale("ar", "")
+                    ? MainAxisAlignment.end
+                    : MainAxisAlignment.start,
+                children: [
+                  SlovitLogo(),
+                ],
+              );
+            },
           ),
         ),
         body: Column(
@@ -45,7 +53,7 @@ class ResetPassword extends StatelessWidget {
                   child: BlocBuilder<ThemeBloc, ThemeState>(
                     builder: (context, state) {
                       return Text(
-                        "Modifier Mot de passe",
+                        AppLocalizations.of(context)!.modifier_mdp,
                         style: TextStyle(
                             fontSize: 25,
                             fontWeight: FontWeight.bold,
@@ -78,14 +86,14 @@ class ResetPassword extends StatelessWidget {
                                 ScaffoldMessenger.of(context)
                                     .showSnackBar(SnackBar(
                                         content: Text(
-                                  'Un email a été envoyé pour modifier votre mot de passe vueillez vérifier',
+                                  AppLocalizations.of(context)!.envoyer_dem_sub,
                                 )));
                               } catch (e) {
                                 print(e.toString());
                               }
                             },
-                            child: const Text(
-                              'Envoyer demande',
+                            child: Text(
+                              AppLocalizations.of(context)!.envoyer_dem,
                             ),
                           ),
                         )

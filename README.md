@@ -1,24 +1,21 @@
-# flutterfirebase
 
-A new Flutter project.
+# Application mobile Andoid / IOS
 
-## Getting Started
+Cette application permet de créer un groupe associé à un projet \
+où un utilisateur ajoute les autres membres de l'équipe au groupe.\
+Chacun d'eux pourra poster son problème et attendre qu'un autre \
+membre commente sa solution.
 
-This project is a starting point for a Flutter application.
+## Prérequis
+Installer [Vs Code](https://code.visualstudio.com/download) \
+Installer [Flutter Sdk](https://docs.flutter.dev/get-started/install)
 
-A few resources to get you started if this is your first Flutter project:
+## Outils de programmation
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+![alt text](https://img.icons8.com/color/2x/flutter.png) 
+![alt text](https://img.icons8.com/color/2x/dart.png)
+![alt text](https://img.icons8.com/color/2x/firebase.png)
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Screenshot
 
-
-
-salmaoussahi@gmail.com
-salmasalma
-
-test@gmail.com
-testtest
+![alt text](flutter_02.png)
