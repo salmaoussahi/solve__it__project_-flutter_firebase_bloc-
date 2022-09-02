@@ -19,3 +19,9 @@ Installer [Flutter Sdk](https://docs.flutter.dev/get-started/install)
 ## Screenshot
 ### Authentification
 ![alt text](screen1.png)
+
+### Paramétrage
+![alt text](screen2.png)
+
+### Ajout dun groupe
+![alt text](screen3.png)
